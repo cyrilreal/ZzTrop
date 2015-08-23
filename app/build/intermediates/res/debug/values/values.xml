@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string-array name="patterns_cabin">
+        <item>(Srv) • R • R • Srv</item>
+        <item>(Srv) • R • Srv • R</item>
+        <item>(Srv) • R • R • Srv • R</item>
+        <item>(Srv) • R • R • R • Srv</item>
+        <item>(Srv) • R • R • R • R • Srv</item>
+        <item>(Srv) • R • R • R • Srv • R • R</item>
+        <item>(Srv) • R • Srv • R • Srv</item>
+        <item>(Srv) • R • R • Srv • R • R • Srv</item>
+        <item>(Srv) • R • R • Srv • R • Srv</item>
+        <item>(Srv) • R • Srv • R • R • Srv</item>
+        <item>(Srv) • R • 3R • Srv • R • 3R • Srv</item>
+    </string-array>
+    <string-array name="patterns_cockpit">
+        <item>R / R</item>
+        <item>R / R / R</item>
+        <item>R / 2R / R</item>
+        <item>R / 3R / 2R</item>
+        <item>2R / 2R / R / R</item>
+        <item>R / 4R / 3R</item>
+        <item>R / R / 2R / 2R</item>
+        <item>R / R / R / R</item>
+        <item>R / 2R / 2R / R</item>
+        <item>R / x / R</item>
+        <item>x / x / R / R</item>
+        <item>R / R / x / x</item>
+        <item>R / x / x / R</item>
+        <item>x / R / R / x</item>
+        <item>30\' / R / R / 1h</item>
+        <item>R - x / R / x</item>
+        <item>R - x / R / R / x</item>
+        <item>R + 1h / R / R</item>
+        <item>R / R / R / R / R / R</item>
+        <item>R / R / R / 3R / 3R / 3R</item>
+        <item>R / R / 3R / 3R / 3R / R</item>
+        <item>x / x / x / R / R / R</item>
+        <item>R / R / R / x / x / x</item>
+        <item>x / x / R / R / R / x</item>
+        <item>x / x / x / x / R / R</item>
+        <item>R / R / x / x / x / x</item>
+        <item>30\' / R / R / R / R / 1h</item>
+        <item>R / R / 2R / 2R / 2R / R</item>
+        <item>R / R / 2R / R / R</item>
+        <item>x / x / R / R - x / R - x</item>
+    </string-array>
+    <string-array name="spnrPauseValues">
+        <item>0</item>
+        <item>5\'</item>
+        <item>10\'</item>
+        <item>15\'</item>
+        <item>20\'</item>
+    </string-array>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/attrs.xml -->
+    <eat-comment/>
+    <attr format="reference" name="dialogBackground"/>
+    <attr format="reference" name="listViewBorder"/>
+    <attr format="reference" name="textViewLook"/>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <color name="colorAirbusBlue">#667b9a</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBoeingBraun">#947c5a</color>
+    <color name="colorBoeingBraunDark">#352925</color>
+    <color name="colorBoeingGrey">#7b818d</color>
+    <color name="colorDarkGrey">#555</color>
+    <color name="colorLightGrey">#aaa</color>
+    <color name="colorMediumGrey">#777</color>
+    <color name="colorNavy">#000080</color>
+    <color name="colorOrange">#ffa500</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorWhite30">#5fff</color>
+    <color name="colorWhite50">#8fff</color>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="airbus">Airbus</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="alarm">ZzTrop alarm</string>
+    <string name="app_must_be_closed">Application must be closed for new theme to take effect…</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="app_name">ZzTrop</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="back">Back</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="boeing">Boeing</string>
+    <string name="boeing_grey">Boeing (vintage)</string>
+    <string name="button_minus">-</string>
+    <string name="button_plus">+</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="cabin">Cabin</string>
+    <string name="calculate">Calculate</string>
+    <string name="cancel">Cancel</string>
+    <string name="caution">CAUTION</string>
+    <string name="choose_pattern">Choose a pattern :</string>
+    <string name="close">Close</string>
+    <string name="cockpit">Cockpit</string>
+    <string name="cockpit_based_on_tkf_ldg">Cockpit (based on tkf/ldg)</string>
+    <string name="contact">Contact: Cyril REAL</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="digit_values">0123456789:</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="email">email</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="email_adress">cyril.real@gmail.com</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="email_subject">About ZzTrop…</string>
+    <string name="end">End</string>
+    <string name="end2p">End :</string>
+    <string name="enter_x_valeur">Enter X value</string>
+    <string name="fast_pad">Fast pad (5\' precision)</string>
+    <string name="first_rest_start">First rest start time</string>
+    <string name="flight_time">Flight time</string>
+    <string name="flt_time">Flt time</string>
+    <string name="formats">(formats hh:mm, h:mm or mm)</string>
+    <string name="help">Help</string>
+    <string name="it_is_time">It\'s time…</string>
+    <string name="landing">Landing</string>
+    <string name="landing_time">Landing time</string>
+    <string name="last_rest_end">Last rest end time</string>
+    <string name="last_service">Last Service :</string>
+    <string name="last_service_duration">Last service duration</string>
+    <string name="last_service_end">Last service end time</string>
+    <string name="ldg">Ldg</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="letter_C">C</string>
+    <string name="letter_v">v</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="mem">Mem</string>
+    <string name="miscellaneous">Miscellaneous</string>
+    <string name="modify_rest">Modify this rest</string>
+    <string name="no_email_client">No email client found on this device…</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="number_0">0</string>
+    <string name="number_00">00</string>
+    <string name="number_01">01</string>
+    <string name="number_02">02</string>
+    <string name="number_03">03</string>
+    <string name="number_04">04</string>
+    <string name="number_05">05</string>
+    <string name="number_06">06</string>
+    <string name="number_07">07</string>
+    <string name="number_08">08</string>
+    <string name="number_09">09</string>
+    <string name="number_1">1</string>
+    <string name="number_10">10</string>
+    <string name="number_11">11</string>
+    <string name="number_12">12</string>
+    <string name="number_13">13</string>
+    <string name="number_14">14</string>
+    <string name="number_15">15</string>
+    <string name="number_16">16</string>
+    <string name="number_17">17</string>
+    <string name="number_18">18</string>
+    <string name="number_19">19</string>
+    <string name="number_2">2</string>
+    <string name="number_20">20</string>
+    <string name="number_21">21</string>
+    <string name="number_22">22</string>
+    <string name="number_23">23</string>
+    <string name="number_25">25</string>
+    <string name="number_3">3</string>
+    <string name="number_30">30</string>
+    <string name="number_35">35</string>
+    <string name="number_4">4</string>
+    <string name="number_40">40</string>
+    <string name="number_45">45</string>
+    <string name="number_5">5</string>
+    <string name="number_50">50</string>
+    <string name="number_55">55</string>
+    <string name="number_6">6</string>
+    <string name="number_7">7</string>
+    <string name="number_8">8</string>
+    <string name="number_9">9</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="ok">OK</string>
+    <string name="patterns_to_display">Choose patterns to display</string>
+    <string name="pause">Pause</string>
+    <string name="pause2p">Pause :</string>
+    <string name="pause_after_service">Pause after service</string>
+    <string name="regular_pad">Regular pad (1\' precision)</string>
+    <string name="rest">Rest :</string>
+    <string name="rest_uppercase">REST :</string>
+    <string name="results">RESULTS</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="round">5\'</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="select_hours">Select Hours :</string>
+    <string name="select_minutes">Select Minutes :</string>
+    <string name="send_email">Send email…</string>
+    <string name="service">Service :</string>
+    <string name="service_duration">Service duration</string>
+    <string name="service_uppercase">SERVICE :</string>
+    <string name="settings">Settings</string>
+    <string name="settingsTheme">Theme</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="shift_minus">←</string>
+    <string name="shift_plus">→</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="show_list">Show list</string>
+    <string name="sleepInertia">Last rest (r) duration :</string>
+    <string name="slide_after_takeoff">Set time after take off</string>
+    <string name="slide_before_landing">Set time before landing</string>
+    <string name="start">Start</string>
+    <string name="start2p">Start :</string>
+    <string name="takeoff">Take off</string>
+    <string name="takeoff_time">Takeoff time</string>
+    <string name="time_selection_mode">Time selection mode</string>
+    <string name="tkf">T/O</string>
+    <string name="toastFieldEmpty">Both Start and End fields must be filled…</string>
+    <string name="toastInvalidEndTimeFormat">Invalid or empty end time…</string>
+    <string name="toastInvalidServiceTimeFormat">Invalid or empty service time…</string>
+    <string name="toastInvalidStartTimeFormat">Invalid or empty start time…</string>
+    <string name="toastInvalidTimeFormat">Invalid time format…</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="version_number">1.53</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="web_adress">http://cyril.real.free.fr/?page_id=84</string>
+    <string name="work_mode">Work mode</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/donottranslate.xml -->
+    <eat-comment/>
+    <string name="www">www</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="zztrop_crew_rest_in_the_tropopause">ZzTrop, crew rest in the tropopause…</string>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="airbus" parent="android:Theme.Black.NoTitleBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorAirbusBlue</item>
+        <item name="android:buttonStyle">@style/cduButton</item>
+        <item name="android:imageButtonStyle">@style/cduButton</item>
+        <item name="android:editTextStyle">@style/airbusEditText</item>
+        <item name="android:spinnerStyle">@style/cduSpinner</item>
+        <item name="android:spinnerItemStyle">@style/cduSpinnerItem20</item>
+        <item name="android:spinnerDropDownItemStyle">@style/airbusDropDownItem</item>
+        <item name="android:buttonStyleToggle">@style/airbusToggleButton</item>
+        <item name="listViewBorder">@drawable/border_cdu_airbus</item>
+        <item name="android:checkboxStyle">@style/airbusCheckBox</item>
+        <item name="android:radioButtonStyle">@style/airbusRadioButton</item>
+        <item name="android:alertDialogStyle">@style/airbusDialog</item>
+        <item name="textViewLook">@drawable/textfield_airbus_normal</item>
+        <item name="dialogBackground">@drawable/dialog_background_airbus</item>
+        <item name="android:seekBarStyle">@style/seekbar_airbus</item>
+    </style>
+    <style name="airbusCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/btn_check_airbus</item>
+    </style>
+    <style name="airbusDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:buttonStyle">@style/cduButton</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="textViewLook">@drawable/textfield_airbus_normal</item>
+        <item name="dialogBackground">@drawable/dialog_background_airbus</item>
+    </style>
+    <style name="airbusDropDownItem">
+        <item name="android:background">@color/colorAirbusBlue</item>
+        <item name="android:textAppearance">@style/textDisplayAppearance</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+    <style name="airbusEditText">
+        <item name="android:background">@drawable/textfield_airbus</item>
+        <item name="android:textAppearance">@style/textDisplayAppearance</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="airbusRadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/btn_radio_airbus</item>
+    </style>
+    <style name="airbusToggleButton" parent="android:Widget">
+        <item name="android:background">@drawable/btn_toggle_airbus</item>
+        <item name="android:gravity">center</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="boeing" parent="android:Theme.Black.NoTitleBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorBoeingBraun</item>
+        <item name="android:buttonStyle">@style/cduButton</item>
+        <item name="android:imageButtonStyle">@style/cduButton</item>
+        <item name="android:editTextStyle">@style/boeingEditText</item>
+        <item name="android:spinnerStyle">@style/cduSpinner</item>
+        <item name="android:spinnerItemStyle">@style/cduSpinnerItem20</item>
+        <item name="android:spinnerDropDownItemStyle">@style/boeingDropDownItem</item>
+        <item name="android:buttonStyleToggle">@style/boeingToggleButton</item>
+        <item name="listViewBorder">@drawable/border_cdu_boeing</item>
+        <item name="android:checkboxStyle">@style/boeingCheckBox</item>
+        <item name="android:radioButtonStyle">@style/boeingRadioButton</item>
+        <item name="android:alertDialogStyle">@style/boeingDialog</item>
+        <item name="textViewLook">@drawable/textfield_boeing_normal</item>
+        <item name="dialogBackground">@drawable/dialog_background_boeing</item>
+        <item name="android:seekBarStyle">@style/seekbar_boeing</item>
+    </style>
+    <style name="boeingCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/btn_check_boeing</item>
+    </style>
+    <style name="boeingDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:buttonStyle">@style/cduButton</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="textViewLook">@drawable/textfield_boeing_normal</item>
+        <item name="dialogBackground">@drawable/dialog_background_boeing</item>
+    </style>
+    <style name="boeingDropDownItem">
+        <item name="android:background">@color/colorBoeingBraun</item>
+        <item name="android:textAppearance">@style/textDisplayAppearance</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+    <style name="boeingEditText">
+        <item name="android:background">@drawable/textfield_boeing</item>
+        <item name="android:textAppearance">@style/textDisplayAppearance</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="boeingGreyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/btn_check_boeing_grey</item>
+    </style>
+    <style name="boeingGreyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:buttonStyle">@style/cduButton</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="textViewLook">@drawable/textfield_boeing_grey_normal</item>
+        <item name="dialogBackground">@drawable/dialog_background_boeing_grey</item>
+    </style>
+    <style name="boeingGreyDropDownItem">
+        <item name="android:background">@color/colorBoeingGrey</item>
+        <item name="android:textAppearance">@style/textDisplayAppearance</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+    <style name="boeingGreyEditText">
+        <item name="android:background">@drawable/textfield_boeing_grey</item>
+        <item name="android:textAppearance">@style/textDisplayAppearance</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="boeingGreyRadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/btn_radio_boeing_grey</item>
+    </style>
+    <style name="boeingGreyToggleButton" parent="android:Widget">
+        <item name="android:background">@drawable/btn_toggle_boeing_grey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="boeingImageButton">
+        <item name="android:background">@drawable/btn_cdu</item>
+        <item name="android:gravity">center</item>
+        <item name="android:height">52dp</item>
+        <item name="android:width">60dp</item>
+    </style>
+    <style name="boeingRadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/btn_radio_boeing</item>
+    </style>
+    <style name="boeingToggleButton" parent="android:Widget">
+        <item name="android:background">@drawable/btn_toggle_boeing</item>
+        <item name="android:gravity">center</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="boeing_grey" parent="android:Theme.Black.NoTitleBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorBoeingGrey</item>
+        <item name="android:buttonStyle">@style/cduButton</item>
+        <item name="android:imageButtonStyle">@style/cduButton</item>
+        <item name="android:editTextStyle">@style/boeingGreyEditText</item>
+        <item name="android:spinnerStyle">@style/cduSpinner</item>
+        <item name="android:spinnerItemStyle">@style/cduSpinnerItem20</item>
+        <item name="android:spinnerDropDownItemStyle">@style/boeingGreyDropDownItem</item>
+        <item name="android:buttonStyleToggle">@style/boeingGreyToggleButton</item>
+        <item name="listViewBorder">@drawable/border_cdu_boeing_grey</item>
+        <item name="android:checkboxStyle">@style/boeingGreyCheckBox</item>
+        <item name="android:radioButtonStyle">@style/boeingGreyRadioButton</item>
+        <item name="android:alertDialogStyle">@style/boeingGreyDialog</item>
+        <item name="textViewLook">@drawable/textfield_boeing_grey_normal</item>
+        <item name="dialogBackground">@drawable/dialog_background_boeing_grey</item>
+        <item name="android:seekBarStyle">@style/seekbar_boeing_grey</item>
+    </style>
+    <style name="cduButton">
+        <item name="android:background">@drawable/btn_cdu</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:height">52dp</item>
+        <item name="android:width">60dp</item>
+    </style>
+    <style name="cduSpinner">
+        <item name="android:background">@drawable/btn_cdu_dropdown</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="cduSpinnerItem16">
+        <item name="android:textAppearance">@style/spinnerButtonTextAppearance16</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+    <style name="cduSpinnerItem20">
+        <item name="android:textAppearance">@style/spinnerButtonTextAppearance20</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+    <style name="seekbar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:minHeight">4dp</item>
+        <item name="android:maxHeight">20dp</item>
+        <item name="android:thumbOffset">0dp</item>
+    </style>
+    <style name="seekbar_airbus" parent="@style/seekbar">
+        <item name="android:progressDrawable">@drawable/seekbar_airbus</item>
+        <item name="android:thumb">@drawable/thumb_boeing</item>
+    </style>
+    <style name="seekbar_boeing" parent="@style/seekbar">
+        <item name="android:progressDrawable">@drawable/seekbar_boeing</item>
+        <item name="android:thumb">@drawable/thumb_boeing</item>
+    </style>
+    <style name="seekbar_boeing_grey" parent="@style/seekbar">
+        <item name="android:progressDrawable">@drawable/seekbar_boeing_grey</item>
+        <item name="android:thumb">@drawable/thumb_boeing_grey</item>
+    </style>
+    <style name="spinnerButtonTextAppearance16">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="spinnerButtonTextAppearance20">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="textDisplayAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="whiteFrame">
+        <item name="android:background">@drawable/border_white</item>
+    </style>
+</resources>

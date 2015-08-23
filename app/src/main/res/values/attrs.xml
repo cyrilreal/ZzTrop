@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<attr name="listViewBorder" format="reference"/>
+	<attr name="textViewLook" format="reference"/>
+	<attr name="dialogBackground" format="reference"/>
+</resources>

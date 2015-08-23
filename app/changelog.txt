@@ -1,0 +1,4 @@
+v 1.53
+- new pattern R + 1h / R / R
+- bug fixed : fastpad with Android 5.0
+- bug fixed : crash when changing app theme

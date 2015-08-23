@@ -1,0 +1,119 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:6:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionCode
+		ADDED from AndroidManifest.xml:5:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	android:installLocation
+		ADDED from AndroidManifest.xml:4:5
+uses-sdk
+ADDED from AndroidManifest.xml:8:5
+MERGED from com.android.support:support-v4:22.2.1:20:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:10:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+supports-screens
+ADDED from AndroidManifest.xml:12:5
+	android:largeScreens
+		ADDED from AndroidManifest.xml:13:9
+	android:smallScreens
+		ADDED from AndroidManifest.xml:15:9
+	android:normalScreens
+		ADDED from AndroidManifest.xml:14:9
+	android:xlargeScreens
+		ADDED from AndroidManifest.xml:16:9
+application
+ADDED from AndroidManifest.xml:21:5
+MERGED from com.android.support:support-v4:22.2.1:22:5
+	android:enabled
+		ADDED from AndroidManifest.xml:22:9
+	android:label
+		ADDED from AndroidManifest.xml:24:9
+	android:icon
+		ADDED from AndroidManifest.xml:23:9
+	android:theme
+		ADDED from AndroidManifest.xml:25:9
+activity#aero.zztrop.MainActivity
+ADDED from AndroidManifest.xml:26:9
+	android:label
+		ADDED from AndroidManifest.xml:28:13
+	android:name
+		ADDED from AndroidManifest.xml:27:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:29:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:30:17
+	android:name
+		ADDED from AndroidManifest.xml:30:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:32:17
+	android:name
+		ADDED from AndroidManifest.xml:32:27
+activity#aero.zztrop.ScreenCockpitMainStrEnd
+ADDED from AndroidManifest.xml:35:9
+	android:name
+		ADDED from AndroidManifest.xml:35:19
+activity#aero.zztrop.ScreenCockpitMainTkfLdg
+ADDED from AndroidManifest.xml:37:9
+	android:name
+		ADDED from AndroidManifest.xml:37:19
+activity#aero.zztrop.ScreenCabinMain
+ADDED from AndroidManifest.xml:39:9
+	android:name
+		ADDED from AndroidManifest.xml:39:19
+activity#aero.zztrop.ScreenCabin1S
+ADDED from AndroidManifest.xml:41:9
+	android:name
+		ADDED from AndroidManifest.xml:41:19
+activity#aero.zztrop.ScreenCabin2S
+ADDED from AndroidManifest.xml:43:9
+	android:name
+		ADDED from AndroidManifest.xml:43:19
+activity#aero.zztrop.ScreenResultCockpit
+ADDED from AndroidManifest.xml:45:9
+	android:name
+		ADDED from AndroidManifest.xml:45:19
+activity#aero.zztrop.ScreenResultCabin
+ADDED from AndroidManifest.xml:47:9
+	android:name
+		ADDED from AndroidManifest.xml:47:19
+activity#aero.zztrop.ScreenSettings
+ADDED from AndroidManifest.xml:49:9
+	android:name
+		ADDED from AndroidManifest.xml:49:19
+activity#aero.zztrop.ScreenHelp
+ADDED from AndroidManifest.xml:51:9
+	android:name
+		ADDED from AndroidManifest.xml:51:19
+activity#aero.zztrop.ScreenTimeFastpad
+ADDED from AndroidManifest.xml:53:9
+	android:name
+		ADDED from AndroidManifest.xml:53:19
+activity#aero.zztrop.ScreenTimeKeypad
+ADDED from AndroidManifest.xml:55:9
+	android:name
+		ADDED from AndroidManifest.xml:55:19
+activity#aero.zztrop.ScreenTimeKeypadService
+ADDED from AndroidManifest.xml:57:9
+	android:name
+		ADDED from AndroidManifest.xml:57:19
+activity#aero.zztrop.ScreenSettingsPatterns
+ADDED from AndroidManifest.xml:59:9
+	android:name
+		ADDED from AndroidManifest.xml:59:19

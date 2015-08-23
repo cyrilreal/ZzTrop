@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Cyril/Documents/Programmation/AndroidStudioProjects/ZzTrop/app/src/main/res/values-fr/strings.xml -->
+    <eat-comment/>
+    <string name="alarm">Réveil ZzTrop</string>
+    <string name="app_must_be_closed">L\'application doit être fermée pour appliquer le nouveau thème…</string>
+    <string name="back">Retour</string>
+    <string name="cabin">Cabine</string>
+    <string name="calculate">Calculer</string>
+    <string name="cancel">Annuler</string>
+    <string name="caution">ATTENTION</string>
+    <string name="choose_pattern">Choisir un schéma :</string>
+    <string name="close">Fermer</string>
+    <string name="cockpit">Cockpit</string>
+    <string name="cockpit_based_on_tkf_ldg">Cockpit (basé sur déc/att)</string>
+    <string name="contact">Contact: Cyril REAL</string>
+    <string name="email">email</string>
+    <string name="email_subject">A propos de ZzTrop…</string>
+    <string name="end">Fin</string>
+    <string name="end2p">Fin :</string>
+    <string name="enter_x_valeur">Entrer la valeur de X</string>
+    <string name="fast_pad">Pavé rapide (précis à 5\')</string>
+    <string name="first_rest_start">Début du premier repos</string>
+    <string name="flight_time">Temps de vol</string>
+    <string name="flt_time">Tps vol</string>
+    <string name="formats">(formats hh:mm, h:mm or mm)</string>
+    <string name="help">Aide</string>
+    <string name="it_is_time">C\'est l\'heure…</string>
+    <string name="landing">Atterr.</string>
+    <string name="landing_time">Heure d\'atterrissage</string>
+    <string name="last_rest_end">Fin du dernier repos</string>
+    <string name="last_service">Dernier service :</string>
+    <string name="last_service_duration">Durée du dernier service</string>
+    <string name="last_service_end">Fin du dernier service</string>
+    <string name="ldg">Att</string>
+    <string name="mem">Mem</string>
+    <string name="miscellaneous">Divers</string>
+    <string name="modify_rest">Modifier ce repos</string>
+    <string name="no_email_client">Pas de logiciel de courrier trouvé sur cet appareil…</string>
+    <string name="ok">OK</string>
+    <string name="patterns_to_display">Choix des schémas à afficher</string>
+    <string name="pause">Pause</string>
+    <string name="pause2p">Pause :</string>
+    <string name="pause_after_service">Pause après un service</string>
+    <string name="regular_pad">Pavé normal (précis à 1\')</string>
+    <string name="rest">Repos :</string>
+    <string name="rest_uppercase">REPOS :</string>
+    <string name="results">RESULTATS</string>
+    <string name="select_hours">Sélection de l\'heure :</string>
+    <string name="select_minutes">Sélection des minutes :</string>
+    <string name="send_email">Envoyer un email…</string>
+    <string name="service">Service :</string>
+    <string name="service_duration">Durée du service</string>
+    <string name="service_uppercase">SERVICE :</string>
+    <string name="settings">Réglages</string>
+    <string name="settingsTheme">Thème</string>
+    <string name="show_list">Montrer la liste</string>
+    <string name="sleepInertia">Dernier repos (r)</string>
+    <string name="slide_after_takeoff">Durée après décollage</string>
+    <string name="slide_before_landing">Durée avant atterrissage</string>
+    <string name="start">Début</string>
+    <string name="start2p">Début :</string>
+    <string name="takeoff">Décoll.</string>
+    <string name="takeoff_time">Heure de décollage</string>
+    <string name="time_selection_mode">Sélection de l\'heure</string>
+    <string name="tkf">Déc</string>
+    <string name="toastFieldEmpty">Les champs Début et Fin doivent être remplis…</string>
+    <string name="toastInvalidEndTimeFormat">Heure de fin vide ou invalide…</string>
+    <string name="toastInvalidServiceTimeFormat">Durée du service vide ou invalide…</string>
+    <string name="toastInvalidStartTimeFormat">Heure de départ vide ou invalide…</string>
+    <string name="toastInvalidTimeFormat">Format d\'heure non valide…</string>
+    <string name="web_adress">http://cyril.real.free.fr/?page_id=25</string>
+    <string name="work_mode">Mode de travail</string>
+    <string name="zztrop_crew_rest_in_the_tropopause">ZzTrop, repos équipage dans la tropopause…</string>
+</resources>

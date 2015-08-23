@@ -1,0 +1,3 @@
+v 1.53
+- new pattern R + 1h / R / R (used by Swiss)
+- bug fix : app could crash when using fastpad for time selection

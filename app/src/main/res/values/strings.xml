@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- misc -->
+    <string name="sleepInertia">Last rest (r) duration :</string>
+    <string name="app_must_be_closed">Application must be closed for new theme to take effect…</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="settingsTheme">Theme</string>
+    <string name="web_adress">http://cyril.real.free.fr/?page_id=84</string>
+    <string name="contact">Contact: Cyril REAL</string>
+    <string name="email_subject">About ZzTrop…</string>
+    <string name="no_email_client">No email client found on this device…</string>
+    <string name="send_email">Send email…</string>
+    <string name="email">email</string>
+    <string name="ok">OK</string>
+    <string name="work_mode">Work mode</string>
+    <string name="help">Help</string>
+    <string name="enter_x_valeur">Enter X value</string>
+    <string name="miscellaneous">Miscellaneous</string>
+    <string name="pause_after_service">Pause after service</string>
+    <string name="modify_rest">Modify this rest</string>
+    <string name="mem">Mem</string>
+    <string name="first_rest_start">First rest start time</string>
+    <string name="last_rest_end">Last rest end time</string>
+    <string name="last_service_end">Last service end time</string>
+    <string name="service_duration">Service duration</string>
+    <string name="last_service_duration">Last service duration</string>
+    <string name="takeoff_time">Takeoff time</string>
+    <string name="landing_time">Landing time</string>
+    <string name="settings">Settings</string>
+    <string name="fast_pad">Fast pad (5\' precision)</string>
+    <string name="regular_pad">Regular pad (1\' precision)</string>
+    <string name="time_selection_mode">Time selection mode</string>
+    <string name="formats">(formats hh:mm, h:mm or mm)</string>
+    <string name="rest">Rest :</string>
+    <string name="choose_pattern">Choose a pattern :</string>
+    <string name="last_service">Last Service :</string>
+    <string name="service">Service :</string>
+    <string name="rest_uppercase">REST :</string>
+    <string name="service_uppercase">SERVICE :</string>
+    <string name="cockpit">Cockpit</string>
+    <string name="cockpit_based_on_tkf_ldg">Cockpit (based on tkf/ldg)</string>
+    <string name="cabin">Cabin</string>
+    <string name="calculate">Calculate</string>
+    <string name="back">Back</string>
+    <string name="caution">CAUTION</string>
+    <string name="results">RESULTS</string>
+    <string name="select_minutes">Select Minutes :</string>
+    <string name="select_hours">Select Hours :</string>
+    <string name="zztrop_crew_rest_in_the_tropopause">ZzTrop, crew rest in the tropopause…</string>
+    <string name="pause">Pause</string>
+    <string name="end">End</string>
+    <string name="start">Start</string>
+    <string name="pause2p">Pause :</string>
+    <string name="end2p">End :</string>
+    <string name="start2p">Start :</string>
+
+    <!-- toasts -->
+    <string name="toastFieldEmpty">Both Start and End fields must be filled…</string>
+    <string name="toastInvalidTimeFormat">Invalid time format…</string>
+    <string name="toastInvalidStartTimeFormat">Invalid or empty start time…</string>
+    <string name="toastInvalidEndTimeFormat">Invalid or empty end time…</string>
+    <string name="toastInvalidServiceTimeFormat">Invalid or empty service time…</string>
+
+    <!-- custom colors -->
+    <color name="colorOrange">#ffa500</color>
+    <color name="colorNavy">#000080</color>
+    <color name="colorDarkGrey">#555</color>
+    <color name="colorMediumGrey">#777</color>
+    <color name="colorLightGrey">#aaa</color>
+    <color name="colorWhite30">#5fff</color>
+    <color name="colorWhite50">#8fff</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBoeingBraun">#947c5a</color>
+    <color name="colorBoeingGrey">#7b818d</color>
+    <color name="colorBoeingBraunDark">#352925</color>
+    <color name="colorAirbusBlue">#667b9a</color>
+
+    <string name="patterns_to_display">Choose patterns to display</string>
+    <string name="show_list">Show list</string>
+    <string name="flt_time">Flt time</string>
+    <string name="flight_time">Flight time</string>
+    <string name="takeoff">Take off</string>
+    <string name="landing">Landing</string>
+    <string name="tkf">T/O</string>
+    <string name="ldg">Ldg</string>
+    <string name="slide_after_takeoff">Set time after take off</string>
+    <string name="slide_before_landing">Set time before landing</string>
+    <string name="it_is_time">It\'s time…</string>
+    <string name="alarm">ZzTrop alarm</string>
+
+</resources>
