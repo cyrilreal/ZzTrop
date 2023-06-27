@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<TextView
+	    android:id="@+id/tvHeader"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:text="@string/tvHeader"
+	    android:textColor="@color/colorWhite50"
+	    android:textSize="14dp" >
+
+	</TextView>
+	<LinearLayout
+		android:id="@+id/linlayResultContainer"
+		android:layout_width="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:baselineAligned="false"
+		android:gravity="center"
+		android:orientation="vertical" android:layout_gravity="center">
+		<ListView
+			android:id="@+id/lvResults"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="8dp"
+			android:cacheColorHint="#00000000"
+			android:focusable="false" android:headerDividersEnabled="true">
+		</ListView>
+		<LinearLayout
+			android:id="@+id/linlayAdjustTimes"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:orientation="horizontal">
+			<Button
+				android:id="@+id/btnDurationMinus"
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_marginRight="6dp"
+				android:text="@string/BtnDurationMinus"/>
+			<Button
+				android:id="@+id/btnShiftMinus"
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_marginLeft="6dp"
+				android:layout_marginRight="6dp"
+				android:text="@string/shift_minus"/>
+			<ToggleButton
+				android:id="@+id/tbtnRound"
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_marginLeft="6dp"
+				android:layout_marginRight="6dp"
+				android:textOff="@string/round"
+				android:textOn="@string/round"
+				android:textSize="16dp"/>
+			<Button
+				android:id="@+id/btnShiftPlus"
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_marginLeft="6dp"
+				android:layout_marginRight="6dp"
+				android:text="@string/shift_plus"/>
+			<Button
+				android:id="@+id/btnDurationPlus"
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_marginLeft="6dp"
+				android:text="@string/BtnDurationPlus"/>
+		</LinearLayout>
+	</LinearLayout>
+	<Button
+		android:id="@+id/btnResultsOK"
+		android:layout_width="80dp"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginBottom="4dp"
+		android:text="@string/btnOK">
+	</Button>
+</LinearLayout>

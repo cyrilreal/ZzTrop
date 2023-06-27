@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="600dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bevel_down"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linlayVersion"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvVersionLetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/letter_v"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tvVersionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/tvVersionNumber"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/ScrollView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/border_white"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="16dp"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/tvHelpContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                android:text="@string/tvHelpContent"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnMail"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/btn_grooved"
+            android:text="@string/email"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnHelpOK"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btnWeb"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="24dp"
+            android:background="@drawable/btn_grooved"
+            android:maxLines="1"
+            android:text="@string/www"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/tvHeader"
+        android:textColor="@color/colorWhite50"
+        android:textSize="14dp"></TextView>
+
+    <TextView
+        android:id="@+id/tvHelpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dip"
+        android:text="@string/tvHelpTitle"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+</LinearLayout>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_gravity="center_vertical"
+	android:orientation="vertical">
+
+	<TextView
+	    android:id="@+id/tvHeader"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:text="@string/tvHeader"
+	    android:textColor="@color/colorWhite50"
+	    android:textSize="14dp" >
+
+	</TextView>
+
+	<TextView
+	    android:id="@+id/tvPatternTitle1S"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="8dp"
+	    android:text="PATTERN TITLE"
+	    android:textColor="@color/colorWhite"
+	    android:textSize="20dp"
+	    android:textStyle="bold" >
+
+	</TextView>
+
+	<LinearLayout
+	    android:id="@+id/LinearLayout01"
+	    android:layout_width="wrap_content"
+	    android:layout_height="0dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_weight="1"
+	    android:gravity="center"
+	    android:orientation="vertical" >
+
+		<TableLayout
+		    android:id="@+id/TableLayout01"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_margin="2dp"
+		    android:background="@drawable/border_white" >
+
+			<TableRow
+				android:id="@+id/TableRow01"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="4dip">
+				<TextView
+					android:id="@+id/tvStartTime"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:padding="4dp"
+					android:text="@string/start2p"
+					android:textColor="@color/colorWhite"
+					android:textSize="20dp">
+				</TextView>
+				<LinearLayout
+					android:id="@+id/linlayFltTime"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="right"
+					android:orientation="horizontal">
+					<EditText
+						android:id="@+id/etStart"
+						android:layout_width="96dp"
+						android:layout_height="wrap_content"
+						android:inputType="time">
+					</EditText>
+				</LinearLayout>
+			</TableRow>
+			<TableRow
+				android:id="@+id/TableRow02"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="4dip">
+				<TextView
+					android:id="@+id/tvEndTime"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:padding="4dp"
+					android:text="@string/end2p"
+					android:textColor="@color/colorWhite"
+					android:textSize="20dp">
+				</TextView>
+				<LinearLayout
+					android:id="@+id/LinearLayout03"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="right">
+					<EditText
+						android:id="@+id/etEnd"
+						android:layout_width="96dp"
+						android:layout_height="wrap_content"
+						android:inputType="time">
+					</EditText>
+				</LinearLayout>
+			</TableRow>
+			<TableRow
+				android:id="@+id/TableRow03"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="4dip">
+				<TextView
+					android:id="@+id/tvPauseTime"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:padding="4dp"
+					android:text="@string/pause2p"
+					android:textColor="@color/colorWhite"
+					android:textSize="20dp">
+				</TextView>
+
+				<EditText
+					android:id="@+id/etPause"
+					android:layout_width="96dp"
+					android:layout_height="wrap_content"></EditText>
+			</TableRow>
+			<TableRow
+				android:id="@+id/TableRow04"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="4dip">
+				<TextView
+					android:id="@+id/tvServiceLast"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:padding="4dp"
+					android:text="@string/tvServiceLast"
+					android:textColor="@color/colorWhite"
+					android:textSize="20dp">
+				</TextView>
+				<EditText
+					android:id="@+id/etServiceLast"
+					android:layout_width="96dp"
+					android:layout_height="wrap_content"
+					android:inputType="time">
+				</EditText>
+			</TableRow>
+		</TableLayout>
+	</LinearLayout>
+
+	<Button
+	    android:id="@+id/btnCalculate"
+	    android:layout_width="112dip"
+	    android:layout_height="40dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginBottom="8dp"
+	    android:background="@drawable/btn_small"
+	    android:text="@string/btnCalculate" >
+
+	</Button>
+
+	<LinearLayout
+	    android:id="@+id/linlayBottom"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginBottom="4dp"
+	    android:gravity="center"
+	    android:orientation="horizontal" >
+
+	    <Button
+	        android:id="@+id/btnHelp"
+	        android:layout_width="88dp"
+	        android:layout_height="32dp"
+	        android:background="@drawable/btn_grooved"
+	        android:text="@string/help"
+	        android:textSize="16dp" />
+
+	    <TextView
+	        android:id="@+id/tvMode"
+	        android:layout_width="112dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:lines="1"
+	        android:text="@string/cabinMode"
+	        android:textColor="@color/colorWhite"
+	        android:textSize="16dp" />
+
+	    <Button
+	        android:id="@+id/btnSettings"
+	        android:layout_width="88dp"
+	        android:layout_height="32dp"
+	        android:background="@drawable/btn_grooved"
+	        android:selectAllOnFocus="false"
+	        android:text="@string/settings"
+	        android:textSize="16dp" />
+	</LinearLayout>
+
+</LinearLayout>

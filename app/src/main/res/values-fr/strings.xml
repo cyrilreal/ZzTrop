@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="enter_x_valeur">Entrer la valeur de X</string>
+    <string name="Miscellaneous">Divers</string>
+    <string name="pauseAfterService">Pause après un service</string>
+    <string name="modify_rest">Modifier ce repos</string>
+    <string name="FirstRestStart">Début du premier repos</string>
+    <string name="LastRestEnd">Fin du dernier repos</string>
+    <string name="LastServiceEnd">Fin du dernier service</string>
+    <string name="ServiceDuration">Durée du service</string>
+    <string name="LastServiceDuration">Durée du dernier service</string>
+    <string name="settings">Réglages</string>
+    <string name="tvFastPad">Pavé rapide (précis à 5\')</string>
+    <string name="tvRegularPad">Pavé normal (précis à 1\')</string>
+    <string name="tvTimePickingSettings">Sélection de l\'heure</string>
+    <string name="tvKeypadFormats">(formats hh:mm, h:mm or mm)</string>
+    <string name="tvRest">Repos :</string>
+    <string name="tvChoosePattern">Choisir un schéma :</string>
+    <string name="tvServiceLast">Dernier service :</string>
+    <string name="tvService">Service :</string>
+    <string name="rest_UPPERCASE">REPOS :</string>
+    <string name="service_UPPERCASE">SERVICE :</string>
+    <string name="tvHelpContent"> Appuyer sur le bouton Réglages pour choisir entre les modes Cockpit et Cabine, ou changer les préférences. Il est possible de choisir les schémas à afficher sur les écrans principaux via le bouton [Montrer la liste].\n\n Mode Cockpit :\n - Entrer l\'heure de début du premier repos et l\'heure de fin du dernier repos en tapant sur les champs appropriés.\n\n- Régler le temps de pause entre deux repos.\n\n- Si vous utilisez le mode Cockpit basé sur le décollage et l\'atterrissage, vous pouvez aussi renseigner le temps de vol. L\'heure d\'atterrissage sera calculée si l\'heure de décollage a été renseignée et vice versa. Régler ensuite le temps entre le décollage et le première repos, ainsi que le temps entre le dernier repos et l\'atterrissage à l\'aide des curseurs horizontaux.\n\n- Choisir un des schémas. 2R (ou 3R) signifie une période 2 (ou 3) fois plus longue que le repos de référence. \"x\" signifie une période fixe réglée par l\'utilisateur.\n\n- Arrondir et/ou ajuster les temps de repos si nécessaire. Un appui sur un repos le fait passer en magenta (sélectionné), les bouton plus et moins permettent alors de le modifier.\n\nMode Cabine :\n- Choisir parmi les schémas proposés. Si votre Compagnie utilise un schéma différent, envoyez moi les détails et j\'essaierai de l\'inclure ;-)\n\n - Entrer l\'heure de début du premier repos et l\'heure de fin du dernier repos ou service en tapant sur les champs appropriés.\n\n- Entrer le temps de pause entre 2 repos (ou entre un repos et un service). Si vous voulez une pause après un service qui est suivi d\'un repos, cocher la case correspondante dans l\'écran de préférences.\n\n - Entrer la durée de(s) service(s). Le mode \"pavé normal\" permet de mémoriser des durées type via les boutons Mem. Taper une durée puis faire un appui long sur le bouton Mem désiré. Pour effacer une mémoire, effacer le champ de saisie puis faire un appui long sur le bouton Mem.\n\nZzTrop est un logiciel gratuit et libre. Si toutefois vous voulez supporter son développement en faisant un don, rendez vous sur <a href="https://www.paypal.com/paypalme/cyrilreal">paypal.me/cyrilreal</a>.\n\nLe développeur, Cyril Real ;-)\n\ncyril.real@gmail.com</string>
+    <string name="tvHelpTitle">Aide</string>
+    <string name="help">Aide</string>
+    <string name="btnBack">Retour</string>
+    <string name="tvCaution">ATTENTION</string>
+    <string name="btnOK">OK</string>
+    <string name="tvResult">RESULTATS</string>
+    <string name="tvPickMinutes">Sélection des minutes :</string>
+    <string name="tvPickHour">Sélection de l\'heure :</string>
+    <string name="tvHeader">ZzTrop, repos équipage dans la tropopause…</string>
+    <string name="pause">Pause</string>
+    <string name="end">Fin</string>
+    <string name="start">Début</string>
+    <string name="pause2p">Pause :</string>
+    <string name="end2p">Fin :</string>
+    <string name="start2p">Début :</string>
+    <string name="app_name">ZzTrop</string>
+    <string name="toastFieldEmpty">Les champs Début et Fin doivent être remplis…</string>
+    <string name="toastInvalidTimeFormat">Format d\'heure non valide…</string>
+    <string name="toastInvalidStartTimeFormat">Heure de départ vide ou invalide…</string>
+    <string name="toastInvalidEndTimeFormat">Heure de fin vide ou invalide…</string>
+    <string name="toastInvalidServiceTimeFormat">Durée du service vide ou invalide…</string>
+    <string name="work_mode">Mode de travail</string>
+    <string name="cockpitMode1">Cockpit</string>
+    <string name="cockpitMode2">Cockpit (basé sur déc/att)</string>
+    <string name="cabinMode">Cabine</string>
+    <string name="btnCalculate">Calculer</string>
+    <string name="round">5\'</string>
+    <string name="sleepInertia">Dernier repos (r)</string>
+    <string name="app_must_be_closed">L\'application doit être fermée pour appliquer le nouveau thème…</string>
+    <string name="cancel">Annuler</string>
+    <string name="close">Fermer</string>
+    <string name="email_subject">A propos de ZzTrop…</string>
+    <string name="web_adress">http://cyril.real.free.fr/</string>
+    <string name="no_email_client">Pas de logiciel de courrier trouvé sur cet appareil…</string>
+    <string name="send_email">Envoyer un email…</string>
+    <string name="patterns_to_display">Choix des schémas à afficher</string>
+    <string name="show_list">Montrer la liste</string>
+    <string name="flt_time">Tps vol</string>
+    <string name="flight_time">Temps de vol</string>
+    <string name="takeoff">Décoll.</string>
+    <string name="landing">Atterr.</string>
+    <string name="takeoff_time">Heure de décollage</string>
+    <string name="landing_time">Heure d\'atterrissage</string>
+    <string name="tkf">Déc</string>
+    <string name="ldg">Att</string>
+    <string name="alarm">Réveil ZzTrop</string>
+    <string name="it_is_time">C\'est l\'heure…</string>
+    <string name="enter_pause_time_in_minutes">Durée de la pause (en minutes)</string>
+
+</resources>

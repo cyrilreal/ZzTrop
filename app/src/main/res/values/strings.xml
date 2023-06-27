@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app info -->
+    <color name="colorOrange">#ffa500</color>
+    <color name="colorNavy">#000080</color>
+
+    <!-- patterns for cockpit mode -->
+    <!-- if string is modified, set ZzEngineCockpit's computeRest() method accordingly -->
+    <color name="colorDarkGrey">#555</color>
+
+    <!-- patterns for cabin mode -->
+    <!-- if string is modified, set ZzEngineCabin's computeRest() method accordingly -->
+    <color name="colorMediumGrey">#777</color>
+
+    <!-- misc -->
+    <color name="colorLightGrey">#aaa</color>
+    <color name="colorWhite30">#5fff</color>
+    <color name="colorWhite50">#8fff</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBoeingBraun">#947c5a</color>
+    <color name="colorBoeingGrey">#7b818d</color>
+    <color name="colorBoeingBraunDark">#352925</color>
+    <color name="colorAirbusBlue">#667b9a</color>
+    <string name="app_name">ZzTrop</string>
+    <string name="tvVersionNumber" translatable="false">1.59f</string>
+    <string name="digit_values" translatable="false">0123456789:</string>
+    <string name="sleepInertia">Last rest (r) duration :</string>
+    <string name="app_must_be_closed">Application must be closed for new theme to take effect…</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="settingsTheme">Theme</string>
+    <string name="airbus" translatable="false">Airbus</string>
+    <string name="boeing" translatable="false">Boeing</string>
+    <string name="email_adress" translatable="false">cyril.real@gmail.com</string>
+    <string name="web_adress">http://cyril.real.free.fr/</string>
+    <string name="contact" translatable="false">Contact: Cyril REAL</string>
+    <string name="email_subject">About ZzTrop…</string>
+    <string name="no_email_client">No email client found on this device…</string>
+    <string name="send_email">Send email…</string>
+    <string name="letter_v" translatable="false">v</string>
+    <string name="email" translatable="false">email</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="www" translatable="false">www</string>
+    <string name="number_00" translatable="false">00</string>
+    <string name="number_01">01</string>
+    <string name="number_02">02</string>
+    <string name="number_03">03</string>
+    <string name="number_04">04</string>
+    <string name="number_05">05</string>
+    <string name="number_06">06</string>
+    <string name="number_07">07</string>
+    <string name="number_08">08</string>
+    <string name="number_09">09</string>
+    <string name="number_10">10</string>
+    <string name="number_11">11</string>
+    <string name="number_12">12</string>
+    <string name="number_13">13</string>
+    <string name="number_14">14</string>
+    <string name="number_15">15</string>
+    <string name="number_16">16</string>
+    <string name="number_17">17</string>
+    <string name="number_18">18</string>
+    <string name="number_19">19</string>
+    <string name="number_20">20</string>
+    <string name="number_21">21</string>
+    <string name="number_22">22</string>
+    <string name="number_23">23</string>
+    <string name="number_25">25</string>
+    <string name="number_30">30</string>
+    <string name="number_35">35</string>
+    <string name="number_40">40</string>
+    <string name="number_45">45</string>
+    <string name="number_50">50</string>
+    <string name="number_55">55</string>
+    <string name="number_0">0</string>
+    <string name="number_1">1</string>
+    <string name="number_2">2</string>
+    <string name="number_3">3</string>
+    <string name="number_4">4</string>
+    <string name="number_5">5</string>
+    <string name="number_6">6</string>
+    <string name="number_7">7</string>
+    <string name="number_8">8</string>
+    <string name="number_9">9</string>
+    <string name="letter_C">C</string>
+    <string name="boeing_grey" translatable="false">Boeing (vintage)</string>
+    <string name="work_mode">Work mode</string>
+    <string name="help">Help</string>
+    <string name="enter_x_valeur">Enter X value</string>
+    <string name="Miscellaneous">Miscellaneous</string>
+    <string name="pauseAfterService">Pause after service</string>
+    <string name="modify_rest">Modify this rest</string>
+    <string name="btnMem" translatable="false">Mem</string>
+    <string name="FirstRestStart">First rest start time</string>
+    <string name="LastRestEnd">Last rest end time</string>
+    <string name="LastServiceEnd">Last service end time</string>
+    <string name="ServiceDuration">Service duration</string>
+    <string name="LastServiceDuration">Last service duration</string>
+    <string name="takeoff_time">Takeoff time</string>
+    <string name="landing_time">Landing time</string>
+    <string name="settings">Settings</string>
+    <string name="tvFastPad">Fast pad (5\' precision)</string>
+    <string name="tvRegularPad">Regular pad (1\' precision)</string>
+    <string name="tvTimePickingSettings">Time selection mode</string>
+    <string name="tvKeypadFormats">(formats hh:mm, h:mm or mm)</string>
+    <string name="BtnDurationPlus" translatable="false">+</string>
+    <string name="BtnDurationMinus" translatable="false">-</string>
+    <string name="shift_minus" translatable="false">←</string>
+    <string name="shift_plus" translatable="false">→</string>
+    <string name="round">5\'</string>
+    <string name="RoundTimesToFiveMinutes">Round times to 5\' :</string>
+    <string name="tvRest">Rest :</string>
+    <string name="tvChoosePattern">Choose a pattern :</string>
+    <string name="tvServiceLast">Last Service :</string>
+    <string name="tvService">Service :</string>
+    <string name="rest_UPPERCASE">REST :</string>
+    <string name="service_UPPERCASE">SERVICE :</string>
+    <string name="cockpitMode1">Cockpit</string>
+    <string name="cockpitMode2">Cockpit (based on tkf/ldg)</string>
+    <string name="cabinMode">Cabin</string>
+    <string name="btnCalculate">Calculate</string>
+    <string name="tvHelpContent">- Use Settings button to switch between cockpit and cabin modes or change preferences. You can chose wich patterns to display in the main screens via the [Show list] button.\n\nCockpit mode :\n - Enter start time of the first rest and end time of the last rest by tapping the proper fields\n\n- Set the time (pause) between two rests.\n\n- If using Cockpit mode based on takeoff and landing, you can also enter flight time. Landing time will then be computed provided takeoff time has been entered and vice versa. Set the times between takeoff and first rest, between last rest and landing via the two horizontal cursors.\n\n- Choose one of the patterns. 2R (or 3R) means a period 2 (or 3) times longer than the reference rest. "x" means a user defined rest period.\n\n- Round and/or modify rest times if necessary. Touch a rest turns it magenta which means it is selected, and can now be modify with plus and minus buttons.\n\n Cabin mode :\n - Choose between the proposed patterns. If your airline use a different one, mail me with the details and I\'ll try to include it ;-)\n\n- Enter start time of the first rest and end time of the last rest or service by tapping the proper fields\n\n- Set the time (pause) between two rests (or between rest and service). If you want a pause after a service followed by a rest, check the appropriate box in the settings screen.\n\n- Set service(s) duration(s). If you use keypad page, you will be able to memorize preset durations in Mem buttons. Just type a duration with the keypad and long press the Mem button where you want the preset to be. Clear the field and long press the preset you want to erase.\n\nZzTrop is free software, but if you feel like donating, please help yourself by going to <a href="https://www.paypal.com/paypalme/cyrilreal">paypal.me/cyrilreal</a>.\n\nThe developer, Cyril Real ;-)\n\ncyril.real@gmail.com</string>
+    <string name="tvHelpTitle">Help</string>
+    <string name="btnBack">Back</string>
+    <string name="tvCaution">CAUTION</string>
+
+    <string name="btnOK">OK</string>
+
+    <!-- toasts -->
+    <string name="tvResult">RESULTS</string>
+    <string name="tvPickMinutes">Select Minutes :</string>
+    <string name="tvPickHour">Select Hours :</string>
+    <string name="tvHeader">ZzTrop, crew rest in the tropopause…</string>
+    <string name="pause">Pause</string>
+
+    <!-- custom colors -->
+    <string name="end">End</string>
+    <string name="start">Start</string>
+    <string name="pause2p">Pause :</string>
+    <string name="end2p">End :</string>
+    <string name="start2p">Start :</string>
+    <string name="toastFieldEmpty">Both Start and End fields must be filled…</string>
+    <string name="toastInvalidTimeFormat">Invalid time format…</string>
+    <string name="toastInvalidStartTimeFormat">Invalid or empty start time…</string>
+    <string name="toastInvalidEndTimeFormat">Invalid or empty end time…</string>
+    <string name="toastInvalidServiceTimeFormat">Invalid or empty service time…</string>
+    <string name="patterns_to_display">Choose patterns to display</string>
+    <string name="show_list">Show list</string>
+    <string name="flt_time">Flt time</string>
+
+    <string name="flight_time">Flight time</string>
+    <string name="takeoff">Take off</string>
+    <string name="landing">Landing</string>
+    <string name="tkf">T/O</string>
+    <string name="ldg">Ldg</string>
+    <string name="slide_after_takeoff">Set time after take off</string>
+    <string name="slide_before_landing">Set time before landing</string>
+    <string name="it_is_time">It\'s time…</string>
+    <string name="alarm">ZzTrop alarm</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_pause_time_in_minutes">Enter pause time (in minutes)</string>
+    <string-array name="patterns_cockpit">
+        <item>R / R</item>
+        <item>R / R / R</item>
+        <item>R / 2R / R</item>
+        <item>R / 3R / 2R</item>
+        <item>2R / 3R / R</item>
+        <item>2R / 2R / R / R</item>
+        <item>R / 4R / 3R</item>
+        <item>R / R / 2R / 2R</item>
+        <item>R / R / R / R</item>
+        <item>R / 2R / 2R / R</item>
+        <item>R / x / R</item>
+        <item>x / x / R / R</item>
+        <item>R / R / x / x</item>
+        <item>R / x / x / R</item>
+        <item>x / R / R / x</item>
+        <item>30\' / R / R / 1h</item>
+        <item>R - x / R / x</item>
+        <item>x / R / R - x</item>
+        <item>R - x / R / R / x</item>
+        <item>R / R / R / R / R / R</item>
+        <item>R / R / R / 3R / 3R / 3R</item>
+        <item>R / R / 3R / 3R / 3R / R</item>
+        <item>x / x / x / R / R / R</item>
+        <item>R / R / R / x / x / x</item>
+        <item>x / x / R / R / R / x</item>
+        <item>x / x / x / x / R / R</item>
+        <item>R / R / x / x / x / x</item>
+        <item>30\' / R / R / R / R / 1h</item>
+        <item>R / R / 2R / 2R / 2R / R</item>
+        <item>R / R / 2R / R / R</item>
+        <item>x / x / R / R - x / R - x</item>
+    </string-array>
+    <string-array name="patterns_cabin">
+        <item>(Srv) • R • R • Srv</item>
+        <item>(Srv) • R • Srv • R</item>
+        <item>(Srv) • R • R • Srv • R</item>
+        <item>(Srv) • R • R • R • Srv</item>
+        <item>(Srv) • R • R • R • R • Srv</item>
+        <item>(Srv) • R • 3R • 3R • R • Srv</item>
+        <item>(Srv) • R • R • R • Srv • R • R</item>
+        <item>(Srv) • R • Srv • R • Srv</item>
+        <item>(Srv) • R • R • Srv • R • R • Srv</item>
+        <item>(Srv) • R • R • Srv • 2R • 2R • Srv</item>
+        <item>(Srv) • R • R • Srv • R • Srv</item>
+        <item>(Srv) • R • Srv • R • R • Srv</item>
+        <item>(Srv) • R • 3R • Srv • R • 3R • Srv</item>
+        <item>(Srv) • R • 3R • Srv • 3R • R • Srv</item>
+
+    </string-array>
+
+</resources>

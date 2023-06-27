@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:drawable="@drawable/btn_toggle_airbus_on" android:state_checked="true"/>
+	<!-- pressed -->
+	<item android:drawable="@drawable/btn_toggle_airbus_off"/>
+	<!-- default/unchecked -->
+</selector>

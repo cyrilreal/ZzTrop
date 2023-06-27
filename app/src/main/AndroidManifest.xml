@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="aero.zztrop">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat">
+        <activity
+            android:name=".ActivityMain"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ScreenCabin1S" />
+        <activity android:name=".ScreenCabin2S" />
+        <activity android:name=".ScreenCabinMain" />
+        <activity android:name=".ScreenCockpitMainStrEnd" />
+        <activity android:name=".ScreenCockpitMainTkfLdg" />
+        <activity android:name=".ScreenHelp" />
+        <activity android:name=".ScreenResultCabin" />
+        <activity android:name=".ScreenResultCockpit" />
+        <activity android:name=".ScreenSettingsPatterns" />
+        <activity android:name=".ScreenSettings" />
+        <activity android:name=".ScreenTimeFastpad" />
+        <activity android:name=".ScreenTimeKeypad" />
+        <activity android:name=".ScreenTimeKeypadService" />
+
+    </application>
+
+</manifest>

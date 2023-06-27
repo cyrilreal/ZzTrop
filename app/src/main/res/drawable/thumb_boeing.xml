@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- shadow -->
+    <item
+        android:left="1dp"
+        android:right="1dp">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval" >
+            <solid android:color="#20000000" />
+
+            <size
+                android:height="18dp"
+                android:width="18dp" />
+        </shape>
+    </item>
+    <item
+        android:bottom="1dp"
+        android:left="2dp"
+        android:right="2dp">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval" >
+            <solid android:color="#50000000" />
+
+            <size
+                android:height="17dp"
+                android:width="17dp" />
+        </shape>
+    </item>
+
+    <!-- button -->
+    <item
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval" >
+            <gradient
+                android:angle="270"
+                android:endColor="#ff000000"
+                android:startColor="#ff999999" />
+
+            <size
+                android:height="17dp"
+                android:width="17dp" />
+        </shape>
+    </item>
+    <item
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="1dp">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval" >
+            <gradient
+                android:angle="270"
+                android:endColor="#ff555555"
+                android:startColor="#ff111111" />
+        </shape>
+    </item>
+    <item
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="6dp">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval" >
+            <solid android:color="#ffffffff" />
+
+            <size
+                android:height="4dp"
+                android:width="4dp" />
+        </shape>
+    </item>
+
+</layer-list>
