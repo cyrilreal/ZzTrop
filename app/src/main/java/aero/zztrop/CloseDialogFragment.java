@@ -39,17 +39,13 @@ public class CloseDialogFragment extends DialogFragment {
 
 		Window window = this.getDialog().getWindow();
 		// deal with theme id as it might change between app versions
-		switch (Utils.getSharedThemeResId(this.getActivity())) {
-			case R.style.airbus:
-				window.setBackgroundDrawableResource(R.drawable.dialog_background_airbus);
-				break;
-
-			case R.style.boeing:
-				window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing);
-				break;
-
-			default:
-				window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing_grey);
+		int sharedThemeResId = Utils.getSharedThemeResId(this.getActivity());
+		if (sharedThemeResId == R.style.airbus) {
+			window.setBackgroundDrawableResource(R.drawable.dialog_background_airbus);
+		} else if (sharedThemeResId == R.style.boeing) {
+			window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing);
+		} else {
+			window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing_grey);
 		}
 		return v;
 	}

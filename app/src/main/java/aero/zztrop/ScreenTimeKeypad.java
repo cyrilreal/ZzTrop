@@ -23,6 +23,7 @@ public class ScreenTimeKeypad extends Activity implements OnClickListener {
 	protected SimpleDateFormat sdfTime = new SimpleDateFormat();
 
 	private String pattern; //used only in cockpit mode
+	private int timeType;
 
 	// buttons declarations
 	protected Button btn01;
@@ -71,6 +72,7 @@ public class ScreenTimeKeypad extends Activity implements OnClickListener {
 		tvKeypadTitle = (TextView) findViewById(R.id.tvKeypadTitle);
 
 		Bundle bundle = this.getIntent().getExtras();
+		timeType = bundle.getInt("time_type");
 		tvKeypadTitle.setText(bundle.getString("timeSelectionTitle"));
 		pattern = bundle.getString("pattern");
 
@@ -271,6 +273,7 @@ public class ScreenTimeKeypad extends Activity implements OnClickListener {
 		Intent returnIntent = new Intent();
 		returnIntent.putExtra("time", calTime.getTimeInMillis());
 		returnIntent.putExtra("pattern", pattern);
+		returnIntent.putExtra("time_type", timeType);
 		// send it
 		setResult(RESULT_OK, returnIntent);
 		finish();

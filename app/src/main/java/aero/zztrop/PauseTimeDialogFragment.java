@@ -1,28 +1,16 @@
 package aero.zztrop;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.Calendar;
-import java.util.TimeZone;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,8 +73,7 @@ public class PauseTimeDialogFragment extends DialogFragment implements View.OnCl
      */
     // TODO: Rename and change types and number of parameters
     public static PauseTimeDialogFragment newInstance() {
-        PauseTimeDialogFragment fragment = new PauseTimeDialogFragment();
-        return fragment;
+        return new PauseTimeDialogFragment();
     }
 
     @Override
@@ -95,17 +82,13 @@ public class PauseTimeDialogFragment extends DialogFragment implements View.OnCl
         View v = inflater.inflate(R.layout.dialog_time_keypad, null);
         Window window = this.getDialog().getWindow();
         // deal with theme id as it might change between app versions
-        switch (Utils.getSharedThemeResId(this.getActivity())) {
-            case R.style.airbus:
-                window.setBackgroundDrawableResource(R.drawable.dialog_background_airbus);
-                break;
-
-            case R.style.boeing:
-                window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing);
-                break;
-
-            default:
-                window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing_grey);
+        int sharedThemeResId = Utils.getSharedThemeResId(this.getActivity());
+        if (sharedThemeResId == R.style.airbus) {
+            window.setBackgroundDrawableResource(R.drawable.dialog_background_airbus);
+        } else if (sharedThemeResId == R.style.boeing) {
+            window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing);
+        } else {
+            window.setBackgroundDrawableResource(R.drawable.dialog_background_boeing_grey);
         }
         initComponents(v);
         return v;
@@ -161,7 +144,7 @@ public class PauseTimeDialogFragment extends DialogFragment implements View.OnCl
 
     protected void updateNumberField(String s) {
         // first remove the ":" caracter if any
-        if (etTime.getText().toString().indexOf(":") != -1) {
+        if (etTime.getText().toString().contains(":")) {
             etTime.getText().delete(etTime.getText().toString().indexOf(":"),
                     etTime.getText().toString().indexOf(":") + 1);
         }

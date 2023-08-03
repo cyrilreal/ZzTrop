@@ -56,10 +56,7 @@ public class ScreenSettings extends Activity implements OnClickListener {
 			Intent intent = new Intent(this, ScreenSettingsPatterns.class);
 			boolean cockpit_mode;
 			// get computation mode
-			if (rgModeSelection.getCheckedRadioButtonId() != R.id.rbtnCabinMode)
-				cockpit_mode = true;
-			else
-				cockpit_mode = false;
+			cockpit_mode = rgModeSelection.getCheckedRadioButtonId() != R.id.rbtnCabinMode;
 			// add mode in intent
 			intent.putExtra("cockpit_mode", cockpit_mode);
 			startActivity(intent);
@@ -115,28 +112,20 @@ public class ScreenSettings extends Activity implements OnClickListener {
 		}
 
 		// deal with ThemeSelection radiobuttons
-		switch (prefs.getInt(Utils.PREFS_THEME_RESID_ID,
-				Utils.DEFAULT_THEME_RESID)) {
-
-		case R.style.airbus:
+		int anInt = prefs.getInt(Utils.PREFS_THEME_RESID_ID,
+				Utils.DEFAULT_THEME_RESID);
+		if (anInt == R.style.airbus) {
 			rgThemeSelection.check(R.id.rbtnThemeAirbus);
 			themeResId = R.style.airbus;
-			break;
-
-		case R.style.boeing:
+		} else if (anInt == R.style.boeing) {
 			rgThemeSelection.check(R.id.rbtnThemeBoeing);
 			themeResId = R.style.boeing;
-			break;
-
-		case R.style.boeing_grey:
+		} else if (anInt == R.style.boeing_grey) {
 			rgThemeSelection.check(R.id.rbtnThemeBoeingGrey);
 			themeResId = R.style.boeing_grey;
-			break;
-
-		default:
+		} else {
 			rgThemeSelection.check(R.id.rbtnThemeBoeingGrey);
 			themeResId = R.style.boeing_grey;
-			break;
 		}
 
 		// deal with miscellaneous
@@ -151,65 +140,43 @@ public class ScreenSettings extends Activity implements OnClickListener {
 		SharedPreferences.Editor editor = prefs.edit();
 
 		// getting the checked mode selection method
-		switch (rgModeSelection.getCheckedRadioButtonId()) {
-		case R.id.rbtnCockpitMode1:
+		int checkedRadioButtonId = rgModeSelection.getCheckedRadioButtonId();
+		if (checkedRadioButtonId == R.id.rbtnCockpitMode1) {
 			editor.putInt(Utils.PREFS_STR_START_MODE,
 					Utils.START_MODE_COCKPIT1);
-			break;
-			
-		case R.id.rbtnCockpitMode2:
+		} else if (checkedRadioButtonId == R.id.rbtnCockpitMode2) {
 			editor.putInt(Utils.PREFS_STR_START_MODE,
 					Utils.START_MODE_COCKPIT2);
-			break;
-
-		case R.id.rbtnCabinMode:
+		} else if (checkedRadioButtonId == R.id.rbtnCabinMode) {
 			editor.putInt(Utils.PREFS_STR_START_MODE,
 					Utils.START_MODE_CABIN);
-			break;
-
-		default:
-			break;
 		}
 
 		// getting the checked time selection method
-		switch (rgTimeSelection.getCheckedRadioButtonId()) {
-		case R.id.rbtnTimeSelectionFastpad:
+		int radioButtonId = rgTimeSelection.getCheckedRadioButtonId();
+		if (radioButtonId == R.id.rbtnTimeSelectionFastpad) {
 			editor.putInt("timeSelection", Utils.SETTINGS_FASTPAD);
-			break;
-
-		case R.id.rbtnTimeSelectionKeypad:
+		} else if (radioButtonId == R.id.rbtnTimeSelectionKeypad) {
 			editor.putInt("timeSelection", Utils.SETTINGS_KEYPAD);
-			break;
-
-		default:
-			break;
 		}
 
 		// getting the checked theme selection method
-		switch (rgThemeSelection.getCheckedRadioButtonId()) {
-		case R.id.rbtnThemeAirbus:
+		int buttonId = rgThemeSelection.getCheckedRadioButtonId();
+		if (buttonId == R.id.rbtnThemeAirbus) {
 			editor.putInt(Utils.PREFS_THEME_RESID_ID, R.style.airbus);
 			if (themeResId != R.style.airbus) {
 				themeHasChanged = true;
 			}
-			break;
-
-		case R.id.rbtnThemeBoeing:
+		} else if (buttonId == R.id.rbtnThemeBoeing) {
 			editor.putInt(Utils.PREFS_THEME_RESID_ID, R.style.boeing);
 			if (themeResId != R.style.boeing) {
 				themeHasChanged = true;
 			}
-			break;
-
-		case R.id.rbtnThemeBoeingGrey:
+		} else if (buttonId == R.id.rbtnThemeBoeingGrey) {
 			editor.putInt(Utils.PREFS_THEME_RESID_ID, R.style.boeing_grey);
 			if (themeResId != R.style.boeing_grey) {
 				themeHasChanged = true;
 			}
-			break;
-
-		default:
-			break;
 		}
 
 		// getting miscellaneous states

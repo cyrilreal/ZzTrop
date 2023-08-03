@@ -1,18 +1,14 @@
 package aero.zztrop;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
-import android.widget.Toast;
 
 public class Utils {
 
@@ -40,22 +36,17 @@ public class Utils {
     public static void applySharedTheme(Activity act) {
 
         SharedPreferences sPref = act.getSharedPreferences(SHARED_PREFS_NAME,
-                act.MODE_PRIVATE);
+                Context.MODE_PRIVATE);
 
         int themeID = sPref.getInt(PREFS_THEME_RESID_ID, R.style.boeing_grey);
 
         // deal with theme id as it might change between app versions
-        switch (themeID) {
-            case R.style.airbus:
-                act.setTheme(R.style.airbus);
-                break;
-
-            case R.style.boeing:
-                act.setTheme(R.style.boeing);
-                break;
-
-            default:
-                act.setTheme(R.style.boeing_grey);
+        if (themeID == R.style.airbus) {
+            act.setTheme(R.style.airbus);
+        } else if (themeID == R.style.boeing) {
+            act.setTheme(R.style.boeing);
+        } else {
+            act.setTheme(R.style.boeing_grey);
         }
     }
 
@@ -90,15 +81,8 @@ public class Utils {
         return true;
     }
 
-    @TargetApi(13)
     public static boolean isTablet(Context context) {
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            // honeycomb
-            // test screen size, use reflection because isLayoutSizeAtLeast is
-            // only available since 11
-            return (context.getResources().getConfiguration().smallestScreenWidthDp) >= 600;
-        }
-        return false;
+        return (context.getResources().getConfiguration().smallestScreenWidthDp) >= 600;
     }
 
     public static int parsePauseValue(String s) {
