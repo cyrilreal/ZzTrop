@@ -55,6 +55,9 @@ public class ScreenCabin1S extends FragmentActivity implements OnClickListener,
     private static final int TIME_TYPE_END = 102;
     private static final int TIME_TYPE_SERVICE_LAST = 103;
 
+    private ActivityResultLauncher<Intent> displayKeypadLauncher;
+    private ActivityResultLauncher<Intent> displaySettingsLauncher;
+
     /**
      * Called when the activity is first created.
      */
@@ -117,7 +120,65 @@ public class ScreenCabin1S extends FragmentActivity implements OnClickListener,
 
         btnCalculate = (Button) findViewById(R.id.btnCalculate);
         btnCalculate.setOnClickListener(this);
+
+        // init activity result launchers
+        displayKeypadLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            Calendar calTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                            calTime.setTimeInMillis(intent.getLongExtra("time", 0));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_START)
+                                etStart.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_END)
+                                etEnd.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_SERVICE_LAST)
+                                etServiceLast.setText(sdf.format(calTime.getTime()));
+                        }
+                    }
+                });
+
+        displaySettingsLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            boolean b = intent.getBooleanExtra("theme_has_changed", false);
+                            if (b) {
+                                // use a boolean because of ICS bug with support package
+                                isShowCloseDialog = true;
+                            }
+
+                            // test if work mode has changed (app is in cabin mode)
+                            SharedPreferences prefs = getSharedPreferences(
+                                    Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
+                            int mode = prefs.getInt(Utils.PREFS_STR_START_MODE, Utils.START_MODE_CABIN);
+                            if (mode == Utils.START_MODE_COCKPIT1) {
+                                // display the main cabin screen
+                                intent = new Intent(getApplicationContext(), ScreenCockpitMainStrEnd.class);
+                                startActivity(intent);
+                            }
+
+                            if (mode == Utils.START_MODE_COCKPIT2) {
+                                // display the main cockpit2 screen
+                                intent = new Intent(getApplicationContext(), ScreenCockpitMainTkfLdg.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
     }
+
 
     @Override
     protected void onStop() {
@@ -160,8 +221,7 @@ public class ScreenCabin1S extends FragmentActivity implements OnClickListener,
         }
 
         if (v == etServiceLast) {
-            displayKeypad(TIME_TYPE_SERVICE_LAST,
-                    getString(R.string.LastServiceDuration));
+            displayKeypad(TIME_TYPE_SERVICE_LAST, getString(R.string.LastServiceDuration));
             return;
         }
 
@@ -205,26 +265,22 @@ public class ScreenCabin1S extends FragmentActivity implements OnClickListener,
         }
 
         if (v == etServiceLast && hasFocus) {
-            displayKeypad(TIME_TYPE_SERVICE_LAST,
-                    getString(R.string.LastServiceDuration));
+            displayKeypad(TIME_TYPE_SERVICE_LAST, getString(R.string.LastServiceDuration));
         }
     }
 
     private void processPattern(String pattern) {
         // test if all fields have been properly set
         if (!Utils.stringIsValidTime(etStart.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidStartTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidStartTimeFormat, Toast.LENGTH_LONG).show();
             return;
         }
         if (!Utils.stringIsValidTime(etEnd.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidEndTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidEndTimeFormat, Toast.LENGTH_LONG).show();
             return;
         }
         if (!Utils.stringIsValidTime(etServiceLast.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidServiceTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidServiceTimeFormat, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -247,8 +303,7 @@ public class ScreenCabin1S extends FragmentActivity implements OnClickListener,
     private void displayKeypad(int timeType, String keypadTitle) {
         // first get the prefs to know wich kind of
         // time selection screen the user wants
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
 
         // create a new activity to display the choices and start it
         // according to the result of the switch
@@ -270,69 +325,10 @@ public class ScreenCabin1S extends FragmentActivity implements OnClickListener,
             default:
                 break;
         }
-        //startActivityForResult(intent, timeType);
-        //added foractivityResultLauncher
         intent.putExtra("time_type", timeType);
         displayKeypadLauncher.launch(intent);
     }
 
-    ActivityResultLauncher<Intent> displayKeypadLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                        Intent intent = result.getData();
-                        Calendar calTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-                        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-                        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-                        calTime.setTimeInMillis(intent.getLongExtra("time", 0));
-
-                        if (intent.getIntExtra("time_type", 0) == TIME_TYPE_START) {
-                            etStart.setText(sdf.format(calTime.getTime()));
-                        }
-
-                        if (intent.getIntExtra("time_type", 0) == TIME_TYPE_END) {
-                            etEnd.setText(sdf.format(calTime.getTime()));
-                        }
-
-                        if (intent.getIntExtra("time_type", 0) == TIME_TYPE_SERVICE_LAST) {
-                            etServiceLast.setText(sdf.format(calTime.getTime()));
-                        }
-                    }
-                }
-            });
-
-    ActivityResultLauncher<Intent> displaySettingsLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                        Intent intent = result.getData();
-                        boolean b = intent.getBooleanExtra("theme_has_changed", false);
-                        if (b) {
-                            // use a boolean because of ICS bug with support package
-                            isShowCloseDialog = true;
-                        }
-                        // test if work mode has changed (app is in cabin mode)
-                        SharedPreferences prefs = getSharedPreferences(
-                                Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
-                        int mode = prefs.getInt(Utils.PREFS_STR_START_MODE, Utils.START_MODE_CABIN);
-                        if (mode == Utils.START_MODE_COCKPIT1) {
-                            // display the main cabin screen
-                            intent = new Intent(getApplicationContext(), ScreenCockpitMainStrEnd.class);
-                            startActivity(intent);
-                        }
-
-                        if (mode == Utils.START_MODE_COCKPIT2) {
-                            // display the main cockpit2 screen
-                            intent = new Intent(getApplicationContext(), ScreenCockpitMainTkfLdg.class);
-                            startActivity(intent);
-                        }
-                    }
-                }
-            });
 
     @Override
     public void onDialogOkClick(CharSequence val) {

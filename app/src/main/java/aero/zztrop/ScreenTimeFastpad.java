@@ -12,7 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class ScreenTimeFastpad extends Activity implements OnClickListener{
-	
+
+	private int timeType;
 	private Calendar calTime;
 	private int hours = 0;
 	private int minutes = 0;
@@ -87,6 +88,7 @@ public class ScreenTimeFastpad extends Activity implements OnClickListener{
 			// prepare the return data
 			Intent returnIntent = new Intent();
 			returnIntent.putExtra("time", calTime.getTimeInMillis());
+			returnIntent.putExtra("time_type", timeType);
 			setResult(RESULT_OK, returnIntent);
 			
 			// reset the flags kill the dialog
@@ -101,10 +103,12 @@ public class ScreenTimeFastpad extends Activity implements OnClickListener{
 	}
 	
 	private void initComponents() {
-		calTime = Calendar.getInstance(
-				TimeZone.getTimeZone("UTC"));
+		calTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 		calTime.setTimeInMillis(0);
-		
+
+		Bundle bundle = this.getIntent().getExtras();
+		timeType = bundle.getInt("time_type");
+
 		btnH00 = (Button) findViewById(R.id.btnH00);
 		btnH00.setOnClickListener(this);
 		btnH01 = (Button) findViewById(R.id.btnH01);

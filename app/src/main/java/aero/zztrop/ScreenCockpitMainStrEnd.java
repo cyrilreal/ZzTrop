@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -28,28 +33,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ScreenCockpitMainStrEnd extends FragmentActivity implements
-        OnClickListener,
-        OnFocusChangeListener, OnItemClickListener,
+        OnClickListener, OnFocusChangeListener, OnItemClickListener,
         PauseTimeDialogFragment.PauseTimeDialogListener {
 
     // to deal with android.support.v4 bug
     boolean isShowCloseDialog = false;
-
     private EditText etStart;
     private EditText etEnd;
     private EditText etPauseDuration;
-
     private long xTime = 0; // for patterns with a x value (forced by user)
-
     private boolean flagLaunch = true; // prevent timescreen display at startup
-
     private Button btnHelp, btnSettings;
     private ListView lvPatterns;
     ArrayAdapter<String> adapter;
     private static final int TIME_TYPE_START = 101;
     private static final int TIME_TYPE_END = 102;
     private static final int TIME_TYPE_X = 110;
-    private static final int REQUEST_SETTINGS = 53;
+    private ActivityResultLauncher<Intent> displayKeypadLauncher;
+    private ActivityResultLauncher<Intent> displaySettingsLauncher;
 
     /**
      * Called when the activity is first created.
@@ -105,6 +106,70 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
 
         lvPatterns.setAdapter(adapter);
         lvPatterns.setOnItemClickListener(this);
+
+        // init activity result launchers
+        displayKeypadLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            Calendar calTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                            calTime.setTimeInMillis(intent.getLongExtra("time", 0));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_START)
+                                etStart.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_END)
+                                etEnd.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_X) {
+                                xTime = calTime.getTimeInMillis();
+                                processPattern(intent.getStringExtra("pattern"));
+                            }
+                        }
+                    }
+                });
+
+        displaySettingsLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            boolean b = intent.getBooleanExtra("theme_has_changed", false);
+                            if (b) {
+                                // use a boolean because of ICS bug with support package
+                                isShowCloseDialog = true;
+                            }
+
+                            // reset listview adapter cause pattern list may have changed
+                            lvPatterns.setAdapter(new ArrayAdapter<CharSequence>(
+                                    getApplicationContext(), R.layout.row_pattern_cockpit,
+                                    R.id.tvPattern, getDisplayablePatterns()));
+
+                            // test if work mode has changed (app is in cabin mode)
+                            SharedPreferences prefs = getSharedPreferences(
+                                    Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
+                            int mode = prefs.getInt(Utils.PREFS_STR_START_MODE, Utils.START_MODE_CABIN);
+                            if (mode == Utils.START_MODE_COCKPIT2) {
+                                // display the main cockpit2 screen
+                                intent = new Intent(getApplicationContext(), ScreenCockpitMainTkfLdg.class);
+                                startActivity(intent);
+                            }
+
+                            if (mode == Utils.START_MODE_CABIN) {
+                                // display the main cabin screen
+                                intent = new Intent(getApplicationContext(), ScreenCabinMain.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
     }
 
     @Override
@@ -112,8 +177,7 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
         super.onStop();
 
         // Save user preferences
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("pause_time_cockpit", etPauseDuration.getText().toString());
         editor.commit();
@@ -133,8 +197,7 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
     public void onClick(View v) {
 
         if (v == etStart) {
-            displayKeypad(TIME_TYPE_START, null,
-                    getString(R.string.FirstRestStart));
+            displayKeypad(TIME_TYPE_START, null, getString(R.string.FirstRestStart));
         }
 
         if (v == etEnd) {
@@ -155,7 +218,7 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
         if (v == btnSettings) {
             // create a new activity to display the help screen
             Intent intent = new Intent(this, ScreenSettings.class);
-            startActivityForResult(intent, REQUEST_SETTINGS);
+            displaySettingsLauncher.launch(intent);
         }
     }
 
@@ -167,8 +230,7 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
         }
 
         if (v == etStart && hasFocus) {
-            displayKeypad(TIME_TYPE_START, null,
-                    getString(R.string.FirstRestStart));
+            displayKeypad(TIME_TYPE_START, null, getString(R.string.FirstRestStart));
             return;
         }
 
@@ -201,22 +263,19 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
 
     private boolean testFieldsReady() {
         if (!Utils.stringIsValidTime(etStart.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidStartTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidStartTimeFormat, Toast.LENGTH_LONG).show();
             return false;
         }
 
         if (!Utils.stringIsValidTime(etEnd.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidEndTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidEndTimeFormat, Toast.LENGTH_LONG).show();
             return false;
         }
 
         return true;
     }
 
-    private void displayKeypad(int timeType, String pattern,
-                               String timeSelectionTitle) {
+    private void displayKeypad(int timeType, String pattern, String timeSelectionTitle) {
         Intent intent = null;
 
         // if TIME_TYPE_X, force KeyPadService
@@ -224,15 +283,14 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
             intent = new Intent(this, ScreenTimeKeypadService.class);
             intent.putExtra("timeSelectionTitle", timeSelectionTitle);
             intent.putExtra("pattern", pattern);
-
-            startActivityForResult(intent, timeType);
+            intent.putExtra("time_type", timeType);
+            displayKeypadLauncher.launch(intent);
             return;
         }
 
         // first get the prefs to know wich kind of
         // time selection screen the user wants
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
 
         // create a new activity to display the choices and start it
         // according to the result of the switch
@@ -249,86 +307,10 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
             default:
                 break;
         }
-        startActivityForResult(intent, timeType);
+        intent.putExtra("time_type", timeType);
+        displayKeypadLauncher.launch(intent);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_SETTINGS) {
-            if (resultCode == RESULT_OK) {
-                Bundle bundle = data.getExtras();
-                boolean bln = bundle.getBoolean("theme_has_changed");
-                if (bln) {
-                    // use a boolean because of ICS bug with support package
-                    isShowCloseDialog = true;
-                }
-                SharedPreferences prefs = getSharedPreferences(
-                        Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
-                // reset listview adapter cause pattern list may have changed
-                lvPatterns.setAdapter(new ArrayAdapter<CharSequence>(
-                        this, R.layout.row_pattern_cockpit, R.id.tvPattern,
-                        getDisplayablePatterns()));
-
-                // test if work mode has changed (app is in cockpit mode)
-                int mode = prefs
-                        .getInt(Utils.PREFS_STR_START_MODE,
-                                Utils.START_MODE_COCKPIT1);
-
-                if (mode == Utils.START_MODE_COCKPIT2) {
-                    // display the main cockpit2 screen
-                    Intent intent = new Intent(this, ScreenCockpitMainTkfLdg.class);
-                    startActivity(intent);
-                }
-
-                if (mode == Utils.START_MODE_CABIN) {
-                    // display the main cabin screen
-                    Intent intent = new Intent(this, ScreenCabinMain.class);
-                    startActivity(intent);
-                }
-            }
-        }
-
-        if (requestCode == TIME_TYPE_START) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                etStart.setText(sdf.format(calTime.getTime()));
-            }
-        }
-
-        if (requestCode == TIME_TYPE_END) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                etEnd.setText(sdf.format(calTime.getTime()));
-            }
-        }
-
-        if (requestCode == TIME_TYPE_X) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                xTime = calTime.getTimeInMillis();
-                Bundle bundle = data.getExtras();
-                processPattern(bundle.getString("pattern"));
-            }
-        }
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
@@ -336,19 +318,16 @@ public class ScreenCockpitMainStrEnd extends FragmentActivity implements
         TextView textView = (TextView) v.findViewById(R.id.tvPattern);
         String pattern = textView.getText().toString();
         if (pattern.contains("x")) {
-            displayKeypad(TIME_TYPE_X, pattern,
-                    getString(R.string.enter_x_valeur));
+            displayKeypad(TIME_TYPE_X, pattern, getString(R.string.enter_x_valeur));
         } else
             processPattern(textView.getText().toString());
     }
 
     private String[] getDisplayablePatterns() {
         // open user's preferences
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
         // scan the list of available patterns
-        String[] source = getResources().getStringArray(
-                R.array.patterns_cockpit);
+        String[] source = getResources().getStringArray(R.array.patterns_cockpit);
         ArrayList<String> displayablePatterns = new ArrayList<String>();
         for (String s : source) {
             if (prefs.getBoolean(s, true)) {

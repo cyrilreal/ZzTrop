@@ -4,11 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -48,6 +53,9 @@ public class ScreenCabin2S extends FragmentActivity implements OnClickListener,
     private static final int TIME_TYPE_SERVICE = 103;
     private static final int TIME_TYPE_SERVICE_LAST = 104;
     private static final int REQUEST_SETTINGS = 53;
+
+    private ActivityResultLauncher<Intent> displayKeypadLauncher;
+    private ActivityResultLauncher<Intent> displaySettingsLauncher;
 
     /**
      * Called when the activity is first created.
@@ -114,6 +122,65 @@ public class ScreenCabin2S extends FragmentActivity implements OnClickListener,
 
         btnCalculate = (Button) findViewById(R.id.btnCalculate);
         btnCalculate.setOnClickListener(this);
+
+        // init activity result launchers
+        displayKeypadLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            Calendar calTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                            calTime.setTimeInMillis(intent.getLongExtra("time", 0));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_START)
+                                etStart.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_END)
+                                etEnd.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_SERVICE)
+                                etService.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_SERVICE_LAST)
+                                etServiceLast.setText(sdf.format(calTime.getTime()));
+                        }
+                    }
+                });
+
+        displaySettingsLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            boolean b = intent.getBooleanExtra("theme_has_changed", false);
+                            if (b) {
+                                // use a boolean because of ICS bug with support package
+                                isShowCloseDialog = true;
+                            }
+                            // test if work mode has changed (app is in cabin mode)
+                            SharedPreferences prefs = getSharedPreferences(
+                                    Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
+                            int mode = prefs.getInt(Utils.PREFS_STR_START_MODE, Utils.START_MODE_CABIN);
+                            if (mode == Utils.START_MODE_COCKPIT1) {
+                                // display the main cabin screen
+                                intent = new Intent(getApplicationContext(), ScreenCockpitMainStrEnd.class);
+                                startActivity(intent);
+                            }
+
+                            if (mode == Utils.START_MODE_COCKPIT2) {
+                                // display the main cockpit2 screen
+                                intent = new Intent(getApplicationContext(), ScreenCockpitMainTkfLdg.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
     }
 
     @Override
@@ -250,8 +317,7 @@ public class ScreenCabin2S extends FragmentActivity implements OnClickListener,
     private void displayKeypad(int timeType, String timeSelectionTitle) {
         // first get the prefs to know wich kind of
         // time selection screen the user wants
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
 
         // create a new activity to display the choices and start it
         // according to the result of the switch
@@ -266,107 +332,17 @@ public class ScreenCabin2S extends FragmentActivity implements OnClickListener,
                         || timeSelectionTitle
                         .equals(getString(R.string.LastServiceDuration))) {
                     intent = new Intent(this, ScreenTimeKeypadService.class);
-                    intent.putExtra("timeSelectionTitle", timeSelectionTitle);
                 } else {
                     intent = new Intent(this, ScreenTimeKeypad.class);
-                    intent.putExtra("timeSelectionTitle", timeSelectionTitle);
                 }
-
+                intent.putExtra("timeSelectionTitle", timeSelectionTitle);
                 break;
 
             default:
                 break;
         }
-        startActivityForResult(intent, timeType);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == REQUEST_SETTINGS) {
-            if (resultCode == RESULT_OK) {
-                Bundle bundle = data.getExtras();
-                boolean bln = bundle.getBoolean("theme_has_changed");
-                if (bln == true) {
-                    // use a boolean because of ICS bug with support package
-                    isShowCloseDialog = true;
-                }
-                // test if work mode has changed (app is in cabin mode)
-                SharedPreferences prefs = getSharedPreferences(
-                        Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
-                int mode = prefs
-                        .getInt(Utils.PREFS_STR_START_MODE,
-                                Utils.START_MODE_CABIN);
-                if (mode == Utils.START_MODE_COCKPIT1) {
-                    // display the main cabin screen
-                    Intent intent = null;
-                    intent = new Intent(this, ScreenCockpitMainStrEnd.class);
-                    startActivity(intent);
-                }
-
-                if (mode == Utils.START_MODE_COCKPIT2) {
-                    // display the main cockpit2 screen
-                    Intent intent = null;
-                    intent = new Intent(this, ScreenCockpitMainTkfLdg.class);
-                    startActivity(intent);
-                }
-            }
-        }
-
-        if (requestCode == TIME_TYPE_START) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                etStart.setText(sdf.format(calTime.getTime()));
-            }
-        }
-
-        if (requestCode == TIME_TYPE_END) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                etEnd.setText(sdf.format(calTime.getTime()));
-            }
-        }
-
-        if (requestCode == TIME_TYPE_SERVICE) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                etService.setText(sdf.format(calTime.getTime()));
-            }
-        }
-
-        if (requestCode == TIME_TYPE_SERVICE_LAST) {
-
-            Calendar calTime = Calendar
-                    .getInstance(TimeZone.getTimeZone("UTC"));
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            if (resultCode == RESULT_OK) {
-                calTime.setTimeInMillis(data.getLongExtra("time", 0));
-                etServiceLast.setText(sdf.format(calTime.getTime()));
-            }
-        }
+        intent.putExtra("time_type", timeType);
+        displayKeypadLauncher.launch(intent);
     }
 
     @Override

@@ -1,20 +1,10 @@
 package aero.zztrop;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.TimeZone;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
@@ -25,9 +15,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
         OnClickListener,
@@ -59,6 +62,8 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
 
     private static final int TIME_TYPE_X = 110;
     private static final int REQUEST_SETTINGS = 53;
+    private ActivityResultLauncher<Intent> displayKeypadLauncher;
+    private ActivityResultLauncher<Intent> displaySettingsLauncher;
 
     /**
      * Called when the activity is first created.
@@ -142,6 +147,75 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
                 getDisplayablePatterns());
         lvPatterns.setAdapter(adapter);
         lvPatterns.setOnItemClickListener(this);
+
+        // init activity result launchers
+        displayKeypadLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            Calendar calTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                            calTime.setTimeInMillis(intent.getLongExtra("time", 0));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_START)
+                                etStart.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_END)
+                                etEnd.setText(sdf.format(calTime.getTime()));
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_X) {
+                                xTime = calTime.getTimeInMillis();
+                                processPattern(intent.getStringExtra("pattern"));
+                            }
+
+                            if (intent.getIntExtra("time_type", 0) == TIME_TYPE_FLTTIME) {
+                                etFlightTime.setText(sdf.format(calTime.getTime()));
+                                updateTextFields(TIME_TYPE_FLTTIME);
+                            }
+                        }
+                    }
+                });
+
+        displaySettingsLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                            Intent intent = result.getData();
+                            boolean b = intent.getBooleanExtra("theme_has_changed", false);
+                            if (b) {
+                                // use a boolean because of ICS bug with support package
+                                isShowCloseDialog = true;
+                            }
+
+                            // reset listview adapter cause pattern list may have changed
+                            lvPatterns.setAdapter(new ArrayAdapter<CharSequence>(
+                                    getApplicationContext(), R.layout.row_pattern_cockpit,
+                                    R.id.tvPattern, getDisplayablePatterns()));
+
+                            // test if work mode has changed (app is in cabin mode)
+                            SharedPreferences prefs = getSharedPreferences(
+                                    Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
+                            int mode = prefs.getInt(Utils.PREFS_STR_START_MODE, Utils.START_MODE_CABIN);
+                            if (mode == Utils.START_MODE_COCKPIT1) {
+                                // display the main cockpit1 screen
+                                intent = new Intent(getApplicationContext(), ScreenCockpitMainStrEnd.class);
+                                startActivity(intent);
+                            }
+
+                            if (mode == Utils.START_MODE_CABIN) {
+                                // display the main cabin screen
+                                intent = new Intent(getApplicationContext(), ScreenCabinMain.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
     }
 
     @Override
@@ -182,8 +256,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
     public void onClick(View v) {
 
         if (v == etStart) {
-            displayKeypad(TIME_TYPE_START, null,
-                    getString(R.string.takeoff_time));
+            displayKeypad(TIME_TYPE_START, null, getString(R.string.takeoff_time));
         }
 
         if (v == etEnd) {
@@ -191,8 +264,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
         }
 
         if (v == etFlightTime) {
-            displayKeypad(TIME_TYPE_FLTTIME, null,
-                    getString(R.string.flight_time));
+            displayKeypad(TIME_TYPE_FLTTIME, null, getString(R.string.flight_time));
         }
 
         if (v == etPauseDuration) {
@@ -209,7 +281,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
         if (v == btnSettings) {
             // create a new activity to display the help screen
             Intent intent = new Intent(this, ScreenSettings.class);
-            startActivityForResult(intent, REQUEST_SETTINGS);
+            displaySettingsLauncher.launch(intent);
         }
     }
 
@@ -221,8 +293,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
         }
 
         if (v == etStart && hasFocus == true) {
-            displayKeypad(TIME_TYPE_START, null,
-                    getString(R.string.takeoff_time));
+            displayKeypad(TIME_TYPE_START, null, getString(R.string.takeoff_time));
             return;
         }
 
@@ -232,8 +303,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
         }
 
         if (v == etFlightTime && hasFocus == true) {
-            displayKeypad(TIME_TYPE_FLTTIME, null,
-                    getString(R.string.flight_time));
+            displayKeypad(TIME_TYPE_FLTTIME, null, getString(R.string.flight_time));
             return;
         }
 
@@ -263,22 +333,19 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
 
     private boolean testFieldsReady() {
         if (!Utils.stringIsValidTime(etStart.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidStartTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidStartTimeFormat, Toast.LENGTH_LONG).show();
             return false;
         }
 
         if (!Utils.stringIsValidTime(etEnd.getText().toString())) {
-            Toast.makeText(this, R.string.toastInvalidEndTimeFormat,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toastInvalidEndTimeFormat, Toast.LENGTH_LONG).show();
             return false;
         }
 
         return true;
     }
 
-    private void displayKeypad(int timeType, String pattern,
-                               String timeSelectionTitle) {
+    private void displayKeypad(int timeType, String pattern, String timeSelectionTitle) {
         Intent intent = null;
 
         // if TIME_TYPE_X, force KeyPadService
@@ -286,15 +353,14 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
             intent = new Intent(this, ScreenTimeKeypadService.class);
             intent.putExtra("timeSelectionTitle", timeSelectionTitle);
             intent.putExtra("pattern", pattern);
-
-            startActivityForResult(intent, timeType);
+            intent.putExtra("time_type", timeType);
+            displayKeypadLauncher.launch(intent);
             return;
         }
 
         // first get the prefs to know wich kind of
         // time selection screen the user wants
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
 
         // create a new activity to display the choices and start it
         // according to the result of the switch
@@ -311,10 +377,11 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
             default:
                 break;
         }
-        startActivityForResult(intent, timeType);
+        intent.putExtra("time_type", timeType);
+        displayKeypadLauncher.launch(intent);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+/*    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SETTINGS) {
             if (resultCode == RESULT_OK) {
                 Bundle bundle = data.getExtras();
@@ -409,7 +476,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
             }
         }
 
-    }
+    }*/
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
@@ -417,19 +484,16 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
         TextView textView = (TextView) v.findViewById(R.id.tvPattern);
         String pattern = textView.getText().toString();
         if (pattern.contains("x")) {
-            displayKeypad(TIME_TYPE_X, pattern,
-                    getString(R.string.enter_x_valeur));
+            displayKeypad(TIME_TYPE_X, pattern, getString(R.string.enter_x_valeur));
         } else
             processPattern(textView.getText().toString());
     }
 
     private String[] getDisplayablePatterns() {
         // open user's preferences
-        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME,
-                MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Utils.SHARED_PREFS_NAME, MODE_PRIVATE);
         // scan the list of available patterns
-        String[] source = getResources().getStringArray(
-                R.array.patterns_cockpit);
+        String[] source = getResources().getStringArray(R.array.patterns_cockpit);
         ArrayList<String> displayablePatterns = new ArrayList<String>();
         for (String s : source) {
             if (prefs.getBoolean(s, true)) {
@@ -473,8 +537,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
                         e.printStackTrace();
                     }
                     if (d2 < d1) {
-                        Calendar c = Calendar.getInstance(TimeZone
-                                .getTimeZone("UTC"));
+                        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
                         c.setTimeInMillis(d2);
                         c.add(Calendar.DAY_OF_MONTH, 1);
                         d2 = c.getTimeInMillis();
@@ -519,8 +582,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
                         e.printStackTrace();
                     }
                     if (d2 < d1) {
-                        Calendar c = Calendar.getInstance(TimeZone
-                                .getTimeZone("UTC"));
+                        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
                         c.setTimeInMillis(d2);
                         c.add(Calendar.DAY_OF_MONTH, 1);
                         d2 = c.getTimeInMillis();
@@ -548,8 +610,7 @@ public class ScreenCockpitMainTkfLdg extends FragmentActivity implements
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress,
-                                  boolean fromUser) {
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (seekBar.equals(sbAfterTkf)) {
             tvAfterTkfValue.setText("" + progress + "'");
             // if value != 0, hide the hint
