@@ -44,47 +44,47 @@
     <string name="ok" translatable="false">OK</string>
     <string name="www" translatable="false">www</string>
     <string name="number_00" translatable="false">00</string>
-    <string name="number_01">01</string>
-    <string name="number_02">02</string>
-    <string name="number_03">03</string>
-    <string name="number_04">04</string>
-    <string name="number_05">05</string>
-    <string name="number_06">06</string>
-    <string name="number_07">07</string>
-    <string name="number_08">08</string>
-    <string name="number_09">09</string>
-    <string name="number_10">10</string>
-    <string name="number_11">11</string>
-    <string name="number_12">12</string>
-    <string name="number_13">13</string>
-    <string name="number_14">14</string>
-    <string name="number_15">15</string>
-    <string name="number_16">16</string>
-    <string name="number_17">17</string>
-    <string name="number_18">18</string>
-    <string name="number_19">19</string>
-    <string name="number_20">20</string>
-    <string name="number_21">21</string>
-    <string name="number_22">22</string>
-    <string name="number_23">23</string>
-    <string name="number_25">25</string>
-    <string name="number_30">30</string>
-    <string name="number_35">35</string>
-    <string name="number_40">40</string>
-    <string name="number_45">45</string>
-    <string name="number_50">50</string>
-    <string name="number_55">55</string>
-    <string name="number_0">0</string>
-    <string name="number_1">1</string>
-    <string name="number_2">2</string>
-    <string name="number_3">3</string>
-    <string name="number_4">4</string>
-    <string name="number_5">5</string>
-    <string name="number_6">6</string>
-    <string name="number_7">7</string>
-    <string name="number_8">8</string>
-    <string name="number_9">9</string>
-    <string name="letter_C">C</string>
+    <string name="number_01" translatable="false">01</string>
+    <string name="number_02" translatable="false">02</string>
+    <string name="number_03" translatable="false">03</string>
+    <string name="number_04" translatable="false">04</string>
+    <string name="number_05" translatable="false">05</string>
+    <string name="number_06" translatable="false">06</string>
+    <string name="number_07" translatable="false">07</string>
+    <string name="number_08" translatable="false">08</string>
+    <string name="number_09" translatable="false">09</string>
+    <string name="number_10" translatable="false">10</string>
+    <string name="number_11" translatable="false">11</string>
+    <string name="number_12" translatable="false">12</string>
+    <string name="number_13" translatable="false">13</string>
+    <string name="number_14" translatable="false">14</string>
+    <string name="number_15" translatable="false">15</string>
+    <string name="number_16" translatable="false">16</string>
+    <string name="number_17" translatable="false">17</string>
+    <string name="number_18" translatable="false">18</string>
+    <string name="number_19" translatable="false">19</string>
+    <string name="number_20" translatable="false">20</string>
+    <string name="number_21" translatable="false">21</string>
+    <string name="number_22" translatable="false">22</string>
+    <string name="number_23" translatable="false">23</string>
+    <string name="number_25" translatable="false">25</string>
+    <string name="number_30" translatable="false">30</string>
+    <string name="number_35" translatable="false">35</string>
+    <string name="number_40" translatable="false">40</string>
+    <string name="number_45" translatable="false">45</string>
+    <string name="number_50" translatable="false">50</string>
+    <string name="number_55" translatable="false">55</string>
+    <string name="number_0" translatable="false">0</string>
+    <string name="number_1" translatable="false">1</string>
+    <string name="number_2" translatable="false">2</string>
+    <string name="number_3" translatable="false">3</string>
+    <string name="number_4" translatable="false">4</string>
+    <string name="number_5" translatable="false">5</string>
+    <string name="number_6" translatable="false">6</string>
+    <string name="number_7" translatable="false">7</string>
+    <string name="number_8" translatable="false">8</string>
+    <string name="number_9" translatable="false">9</string>
+    <string name="letter_C" translatable="false">C</string>
     <string name="boeing_grey" translatable="false">Boeing (vintage)</string>
     <string name="work_mode">Work mode</string>
     <string name="help">Help</string>
@@ -159,7 +159,6 @@
     <string name="slide_before_landing">Set time before landing</string>
     <string name="it_is_time">It\'s time…</string>
     <string name="alarm">ZzTrop alarm</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_pause_time_in_minutes">Enter pause time (in minutes)</string>
     <string-array name="patterns_cockpit">
         <item>R / R</item>
@@ -173,6 +172,9 @@
         <item>R / R / R / R</item>
         <item>R / 2R / 2R / R</item>
         <item>R / x / R</item>
+        <item>R / x / x</item>
+        <item>x / x / R</item>
+        <item>x / R / x</item>
         <item>x / x / R / R</item>
         <item>R / R / x / x</item>
         <item>R / x / x / R</item>

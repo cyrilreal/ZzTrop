@@ -15,6 +15,7 @@
     <string name="tvRegularPad">Pavé normal (précis à 1\')</string>
     <string name="tvTimePickingSettings">Sélection de l\'heure</string>
     <string name="tvKeypadFormats">(formats hh:mm, h:mm or mm)</string>
+    <string name="RoundTimesToFiveMinutes">Arrondir à 5\'</string>
     <string name="tvRest">Repos :</string>
     <string name="tvChoosePattern">Choisir un schéma :</string>
     <string name="tvServiceLast">Dernier service :</string>
@@ -54,6 +55,7 @@
     <string name="cancel">Annuler</string>
     <string name="close">Fermer</string>
     <string name="email_subject">A propos de ZzTrop…</string>
+    <string name="settingsTheme">Thème</string>
     <string name="web_adress">http://cyril.real.free.fr/</string>
     <string name="no_email_client">Pas de logiciel de courrier trouvé sur cet appareil…</string>
     <string name="send_email">Envoyer un email…</string>
@@ -68,6 +70,8 @@
     <string name="tkf">Déc</string>
     <string name="ldg">Att</string>
     <string name="alarm">Réveil ZzTrop</string>
+    <string name="slide_after_takeoff">Temps apres décollage</string>
+    <string name="slide_before_landing">Temps avant atterrissage</string>
     <string name="it_is_time">C\'est l\'heure…</string>
     <string name="enter_pause_time_in_minutes">Durée de la pause (en minutes)</string>
 
